@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/saksham/.claude/plugins/marketplaces/**)",
+      "Read(//Users/saksham/.claude/plugins/**)",
+      "Read(//Users/saksham/Developer/**)",
+      "Bash(npx create-next-app@latest arealens --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --no-git)"
+    ]
+  }
+}
