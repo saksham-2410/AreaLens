@@ -4,7 +4,24 @@
       "Read(//Users/saksham/.claude/plugins/marketplaces/**)",
       "Read(//Users/saksham/.claude/plugins/**)",
       "Read(//Users/saksham/Developer/**)",
-      "Bash(npx create-next-app@latest arealens --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --no-git)"
+      "Bash(npx create-next-app@latest arealens --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --no-git)",
+      "Bash(cp -r ~/Developer/arealens/. ~/Developer/AreaLens/)",
+      "Bash(rm -rf ~/Developer/arealens)",
+      "Bash(npm install *)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('dependencies',{}\\), indent=2\\)\\)\")",
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npx next *)",
+      "Bash(curl -s -m 60 \"https://overpass-api.de/api/interpreter\" --data-urlencode 'data=[out:json][timeout:55];\\(relation[\"name\"~\"Sector\"]\\(28.37,76.95,28.49,77.13\\);\\);out geom;' -o /tmp/gurugram_sectors.json)",
+      "Bash(echo \"exit=$?\")",
+      "Read(//tmp/**)",
+      "Bash(python3 -c \"import json; d=json.load\\(open\\('/tmp/gurugram_sectors.json'\\)\\); print\\('relations:', len\\(d['elements']\\)\\); print\\([e.get\\('tags',{}\\).get\\('name'\\) for e in d['elements']][:60]\\)\")",
+      "Bash(python3 /tmp/build_sectors.py)",
+      "Bash(python3 -c ' *)",
+      "Bash(sed -i '' -e 's/import { getSectorsGeoJSON, SECTORS } from/import { getSectorsGeoJSON, ALL_SECTORS as SECTORS } from/' src/components/MapCanvas.tsx)",
+      "Bash(sed -i '' 's/import { SECTORS } from/import { ALL_SECTORS as SECTORS } from/' src/components/CommutePanel.tsx src/lib/commuteUtils.ts)"
     ]
   }
 }
