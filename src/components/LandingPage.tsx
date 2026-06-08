@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
+import { useStore } from '@/lib/store'
+import type { CityId } from '@/data/cities'
 
 // ── Marquee keyframes injected once ──────────────────────────────────────────
 const MARQUEE_CSS = `
@@ -47,11 +49,11 @@ const FEATURES = [
     desc: 'Side-by-side neighbourhood intelligence. Shortlist two sectors and see exactly how they differ.' },
 ]
 
-const CITIES = [
-  { name: 'Gurugram',   status: 'live', note: 'All 94 sectors' },
-  { name: 'Noida',      status: 'soon', note: 'Q3 2025' },
-  { name: 'Mumbai',     status: 'soon', note: 'Q4 2025' },
-  { name: 'Bengaluru',  status: 'soon', note: 'Q4 2025' },
+const CITIES: { name: string; status: 'live' | 'soon'; note: string; id?: CityId }[] = [
+  { name: 'Gurugram',   status: 'live', note: 'All 97 sectors', id: 'gurugram' },
+  { name: 'Bengaluru',  status: 'live', note: '27 areas',       id: 'bangalore' },
+  { name: 'Noida',      status: 'soon', note: 'Q3 2026' },
+  { name: 'Mumbai',     status: 'soon', note: 'Q4 2026' },
   { name: 'Hyderabad',  status: 'soon', note: '2026'    },
   { name: 'Pune',       status: 'soon', note: '2026'    },
   { name: 'Chennai',    status: 'soon', note: '2026'    },
@@ -131,6 +133,11 @@ function CtaButton({ onClick, label = 'EXPLORE YOUR CITY →', large = false }: 
 
 // ── Main Component ────────────────────────────────────────────────────────────
 export default function LandingPage({ onEnter }: { onEnter: () => void }) {
+  const setSelectedCity = useStore(s => s.setSelectedCity)
+  const setPhase = useStore(s => s.setPhase)
+  // Click a live city card → jump straight into that city's map.
+  const enterCity = (id: CityId) => { setSelectedCity(id); setPhase('explore') }
+
   // Inject marquee keyframe once
   useEffect(() => {
     const el = document.createElement('style')
@@ -555,11 +562,18 @@ export default function LandingPage({ onEnter }: { onEnter: () => void }) {
             {CITIES.map((city, i) => (
               <motion.div
                 key={city.name}
-                className="flex flex-col gap-2.5 p-5 rounded-sm"
+                role={city.status === 'live' ? 'button' : undefined}
+                tabIndex={city.status === 'live' ? 0 : undefined}
+                onClick={city.status === 'live' && city.id ? () => enterCity(city.id!) : undefined}
+                onKeyDown={city.status === 'live' && city.id
+                  ? (e) => { if (e.key === 'Enter' || e.key === ' ') enterCity(city.id!) }
+                  : undefined}
+                className="flex flex-col gap-2.5 p-5 rounded-sm transition-colors"
                 initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.06, duration: 0.5 }}
+                whileHover={city.status === 'live' ? { y: -3 } : undefined}
                 style={{
                   border: city.status === 'live'
                     ? '1px solid rgba(155,107,56,0.5)'
@@ -567,6 +581,7 @@ export default function LandingPage({ onEnter }: { onEnter: () => void }) {
                   background: city.status === 'live'
                     ? 'rgba(155,107,56,0.05)'
                     : 'transparent',
+                  cursor: city.status === 'live' ? 'pointer' : 'default',
                 }}
               >
                 {/* Status badge */}

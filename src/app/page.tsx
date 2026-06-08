@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useCallback, useRef } from 'react'
+import { useEffect, useCallback } from 'react'
 import dynamic from 'next/dynamic'
 import { AnimatePresence } from 'framer-motion'
 import { useStore } from '@/lib/store'
@@ -43,21 +43,14 @@ export default function Home() {
     document.documentElement.classList.toggle('night', isNightMode)
   }, [isNightMode])
 
-  // Track whether the user has already chosen a city so that returning
-  // to the landing page skips the city-select screen and goes straight back
-  // to explore.
-  const cityChosenRef = useRef(false)
-
   const handleLoaderComplete = useCallback(() => {
     setPhase('landing')
   }, [setPhase])
 
+  // Always open the city selector from the landing CTA so the user can pick or
+  // switch cities (including changing away from the last-visited one).
   const handleLandingEnter = useCallback(() => {
-    if (cityChosenRef.current) {
-      setPhase('explore')
-    } else {
-      setPhase('city-select')
-    }
+    setPhase('city-select')
   }, [setPhase])
 
   const isMapVisible = phase !== 'loading'
@@ -82,7 +75,7 @@ export default function Home() {
       {/* City selector */}
       <AnimatePresence>
         {phase === 'city-select' && (
-          <CitySelector onSelect={() => { cityChosenRef.current = true }} />
+          <CitySelector onSelect={() => {}} />
         )}
       </AnimatePresence>
 
