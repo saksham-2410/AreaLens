@@ -148,16 +148,24 @@ html, body {
 .maplibregl-ctrl-top-right { display: none !important; }
 
 /* ─── HOVER TOOLTIP ──────────────────────────────────────────────────── */
-.map-tooltip {
+.map-tooltip .maplibregl-popup-content {
   background: var(--bg-panel);
-  border: 1px solid var(--border-hover);
+  border: none !important;
   border-radius: 10px;
   padding: 10px 14px;
   pointer-events: none;
   font-family: 'DM Sans', sans-serif;
   font-size: 13px;
   color: var(--text);
-  box-shadow: 0 8px 24px rgba(155,107,56,0.12);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.08), 0 12px 32px rgba(0,0,0,0.22), 0 2px 8px rgba(155,107,56,0.10);
+}
+.map-tooltip .maplibregl-popup-tip {
+  border-top-color: var(--bg-panel) !important;
+  border-bottom-color: var(--bg-panel) !important;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.12));
+}
+@media (max-width: 639px) {
+  .map-tooltip { display: none !important; }
 }
 
 /* ─── ANIMATIONS ─────────────────────────────────────────────────────── */

@@ -367,7 +367,7 @@ export default function MapCanvas() {
         useStore.getState().setHoveredSector(id)
 
         const s = getPlaceById(id)
-        if (s && tooltipRef.current) {
+        if (s && tooltipRef.current && window.matchMedia('(hover: hover)').matches) {
           tooltipRef.current
             .setLngLat(e.lngLat)
             .setHTML(tooltipHTML(s, useStore.getState().isNightMode))
