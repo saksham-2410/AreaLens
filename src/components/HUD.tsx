@@ -2,6 +2,7 @@
 
 import { useStore, ActiveLayer } from '@/lib/store'
 import { getSunsetLabel } from '@/lib/sunUtils'
+import { getCityConfig } from '@/data/cities'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
@@ -19,8 +20,9 @@ export default function HUD() {
     activeLayer, setActiveLayer,
     isNightMode, nightModeManualOverride, setNightModeOverride,
     compareSectors, setShowComparePanel, showComparePanel,
-    selectedSectorId, setSelectedSector, setPhase,
+    selectedSectorId, setSelectedSector, setPhase, selectedCity,
   } = useStore()
+  const city = getCityConfig(selectedCity)
 
   const [sunLabel, setSunLabel] = useState('')
   const [time, setTime] = useState('')
@@ -30,7 +32,7 @@ export default function HUD() {
 
   useEffect(() => {
     const update = () => {
-      setSunLabel(getSunsetLabel())
+      setSunLabel(getSunsetLabel(city.lat, city.lng))
       const now = new Date()
       const ist = new Date(now.getTime() + 5.5 * 60 * 60 * 1000)
       const h = ist.getUTCHours() % 12 || 12
@@ -40,7 +42,7 @@ export default function HUD() {
     update()
     const t = setInterval(update, 30_000)
     return () => clearInterval(t)
-  }, [])
+  }, [city.lat, city.lng])
 
   return (
     <>
@@ -96,7 +98,7 @@ export default function HUD() {
             className="text-[10px] tracking-widest hidden sm:block"
             style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}
           >
-            GURUGRAM
+            {city.name.toUpperCase()}
           </span>
         </button>
 
@@ -111,7 +113,7 @@ export default function HUD() {
             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-            All sectors
+            All {city.unitPlural}
           </motion.button>
         )}
       </div>
@@ -302,14 +304,40 @@ export default function HUD() {
             </div>
           </div>
 
-          {/* Footer hint */}
-          <div className="mt-auto px-5 py-4" style={{ borderTop: '1px solid var(--border)' }}>
-            <p
-              className="text-[10px] tracking-widest uppercase text-center"
-              style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-dim)' }}
+          {/* Footer — navigation actions */}
+          <div className="mt-auto px-4 py-4 flex flex-col gap-2" style={{ borderTop: '1px solid var(--border)' }}>
+            <button
+              onClick={() => { setSelectedSector(null); setPhase('city-select'); setDrawerOpen(false) }}
+              className="flex items-center gap-3 px-3 py-3 rounded-xl text-left w-full transition-all"
+              style={{
+                background: 'rgba(155,107,56,0.07)',
+                border: '1px solid rgba(155,107,56,0.22)',
+                color: 'var(--copper)',
+                fontFamily: 'var(--font-mono)',
+                fontSize: 13,
+              }}
             >
-              Tap a sector to see its report
-            </p>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <circle cx="12" cy="12" r="3" /><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" />
+              </svg>
+              Change City
+            </button>
+            <button
+              onClick={() => { setSelectedSector(null); setPhase('landing'); setDrawerOpen(false) }}
+              className="flex items-center gap-3 px-3 py-3 rounded-xl text-left w-full transition-all"
+              style={{
+                background: 'transparent',
+                border: '1px solid var(--border)',
+                color: 'var(--text-muted)',
+                fontFamily: 'var(--font-mono)',
+                fontSize: 13,
+              }}
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z" /><path d="M9 21V12h6v9" />
+              </svg>
+              Home
+            </button>
           </div>
         </motion.aside>
       )}

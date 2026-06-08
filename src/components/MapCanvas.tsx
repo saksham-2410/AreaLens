@@ -3,10 +3,10 @@
 import { useEffect, useRef } from 'react'
 import maplibregl from 'maplibre-gl'
 import { useStore, ActiveLayer } from '@/lib/store'
-import { getSectorsGeoJSON, ALL_SECTORS as SECTORS } from '@/data/sectors'
+import type { Sector } from '@/data/sectors'
+import { getCityConfig, getPlaceById } from '@/data/cities'
 import { commuteColor } from '@/lib/commuteUtils'
 
-// CartoDB free styles — Positron (light) for day, Dark Matter for night
 // Stadia Maps vector styles — Alidade Smooth (≈ Positron) for day and its dark
 // twin for night. On localhost these load keyless; in production, allowlist the
 // deploy domain in the Stadia dashboard (domain-based auth, no secret key in
@@ -18,17 +18,9 @@ const STYLE_NIGHT = 'https://tiles.stadiamaps.com/styles/alidade_smooth_dark.jso
 const BG_DAY   = '#F0DEC0'
 const BG_NIGHT = '#0C0907'
 
-// View locked to Gurugram so the wider region never renders
-const GURUGRAM_BOUNDS: maplibregl.LngLatBoundsLike = [
-  [76.91, 28.37],
-  [77.16, 28.50],
-]
-const GURUGRAM_MAX_BOUNDS: maplibregl.LngLatBoundsLike = [
-  [76.88, 28.345],
-  [77.18, 28.520],
-]
-const MIN_ZOOM = 11
-const ZOOM_FOCUS = 14.2
+// Current city config, read live from the store (the view is locked to whichever
+// city is selected so the wider region never renders).
+const cityCfg = () => getCityConfig(useStore.getState().selectedCity)
 
 // ─── Mode-aware paint expressions ──────────────────────────────────────
 function sectorScoreColor(isNight: boolean): maplibregl.ExpressionSpecification {
@@ -50,34 +42,45 @@ function extrusionColor(
   activeLayer: ActiveLayer,
   commuteTimes: Record<string, number>,
 ): maplibregl.ExpressionSpecification {
+  let base: maplibregl.ExpressionSpecification
   if (activeLayer === 'commute') {
-    const cases = SECTORS.flatMap(s => {
-      const secs = commuteTimes[s.id]
+    const cases = Object.entries(commuteTimes).flatMap(([id, secs]) => {
       if (!secs) return []
-      return [['==', ['get', 'id'], s.id] as maplibregl.ExpressionSpecification, commuteColor(secs)]
+      return [['==', ['get', 'id'], id] as maplibregl.ExpressionSpecification, commuteColor(secs)]
     })
     // No office pin yet → no commute data. A 'case' needs ≥1 condition/output
     // pair, so fall back to the neutral score coloring until data exists.
-    if (cases.length === 0) return sectorScoreColor(isNight)
-    return ['case', ...cases, isNight ? '#5A4A2E' : '#C8A87A'] as maplibregl.ExpressionSpecification
-  }
-  if (activeLayer === 'waterlogging') {
-    return ['interpolate', ['linear'], ['get', 'waterlogging'],
+    base = cases.length === 0
+      ? sectorScoreColor(isNight)
+      : (['case', ...cases, isNight ? '#5A4A2E' : '#C8A87A'] as maplibregl.ExpressionSpecification)
+  } else if (activeLayer === 'waterlogging') {
+    base = ['interpolate', ['linear'], ['get', 'waterlogging'],
       1, '#A8C5D8', 2, '#7AAFC8', 3, '#9B85C0', 4, '#7B60A8', 5, '#5B3D88']
-  }
-  if (activeLayer === 'tanker') {
-    return ['interpolate', ['linear'], ['get', 'water_tanker'],
+  } else if (activeLayer === 'tanker') {
+    base = ['interpolate', ['linear'], ['get', 'water_tanker'],
       1, '#7AB88A', 2, '#A8C878', 3, '#D4B840', 4, '#C87830', 5, '#A83820']
-  }
-  if (activeLayer === 'power') {
-    return ['interpolate', ['linear'], ['get', 'power_outage'],
+  } else if (activeLayer === 'power') {
+    base = ['interpolate', ['linear'], ['get', 'power_outage'],
       0, '#7AB88A', 30, '#A8C878', 60, '#D4B840', 90, '#C87830', 120, '#A83820']
-  }
-  if (activeLayer === 'noise') {
-    return ['interpolate', ['linear'], ['get', 'noise_db'],
+  } else if (activeLayer === 'noise') {
+    base = ['interpolate', ['linear'], ['get', 'noise_db'],
       40, isNight ? '#5A4A2E' : '#C8B888', 55, '#C4A840', 65, '#C47820', 72, '#B84820', 80, '#8B2810']
+  } else {
+    base = sectorScoreColor(isNight)
   }
-  return sectorScoreColor(isNight)
+  return base
+}
+
+// The focused area is "un-highlighted" by FILTERING it out of the fill layers
+// entirely (transparent fill-extrusion-color via feature-state renders
+// unreliably). Nothing is drawn there → the basemap shows fully; only the
+// border layer (unfiltered) keeps the area's outline. Pass null to restore.
+const HOLLOW_LAYERS = ['sectors-glow', 'sectors-extrusion']
+function setHollowArea(map: maplibregl.Map, id: string | null) {
+  for (const lyr of HOLLOW_LAYERS) {
+    if (!map.getLayer(lyr)) continue
+    map.setFilter(lyr, id ? ['!=', ['get', 'id'], id] : null)
+  }
 }
 
 function borderColor(isNight: boolean): maplibregl.ExpressionSpecification {
@@ -121,7 +124,7 @@ const HEIGHT: maplibregl.ExpressionSpecification = [
   1.25, HOVER_PEAK,    // overshoot — values >1 only set during the bounce
 ]
 
-function tooltipHTML(s: typeof SECTORS[number], isNight: boolean): string {
+function tooltipHTML(s: Sector, isNight: boolean): string {
   const c = isNight
     ? { main: '#F3E9D8', vibe: '#B6A284', accent: '#D8A85A', price: '#E8C474', sub: '#7C6A50', div: 'rgba(216,168,90,0.18)' }
     : { main: '#2C1A0E', vibe: '#9B7A50', accent: '#9B6B38', price: '#6B3A12', sub: '#B09070', div: 'rgba(155,107,56,0.15)' }
@@ -151,7 +154,8 @@ export default function MapCanvas() {
   // Per-feature spring animation state: id -> { from, to, started, raf }
   const liftAnims    = useRef<Record<string, { raf: number }>>({})
 
-  const { phase, isNightMode, activeLayer, commuteTimes } = useStore()
+  const { phase, isNightMode, activeLayer, commuteTimes, selectedCity, selectedSectorId } = useStore()
+  const prevSelRef = useRef<string | null>(null)
 
   // ─── Add data layers (called on first load + after each style switch) ──
   const addDataLayers = (map: maplibregl.Map, isNight: boolean) => {
@@ -175,7 +179,7 @@ export default function MapCanvas() {
     }
 
     if (!map.getSource('sectors')) {
-      map.addSource('sectors', { type: 'geojson', data: getSectorsGeoJSON() })
+      map.addSource('sectors', { type: 'geojson', data: cityCfg().getGeoJSON() })
     }
 
     // ── GLOW HALO: a soft expanded glow under the hovered sector. Uses fill
@@ -207,7 +211,7 @@ export default function MapCanvas() {
           'fill-extrusion-color': extrusionColor(isNight, useStore.getState().activeLayer, useStore.getState().commuteTimes),
           'fill-extrusion-height': HEIGHT,
           'fill-extrusion-base': 0,
-          'fill-extrusion-opacity': isNight ? 0.95 : 0.90,
+          'fill-extrusion-opacity': isNight ? 0.72 : 0.65,
           // Faster transitions so the JS-driven spring animation feels snappy
           // rather than smeared.
           'fill-extrusion-height-transition': { duration: 120, delay: 0 },
@@ -252,10 +256,11 @@ export default function MapCanvas() {
       })
     }
 
-    // Restore selection highlight (feature-state is wiped on style switch)
+    // Restore selection highlight + hollow filter (both wiped on style switch)
     const sel = useStore.getState().selectedSectorId
     if (sel) {
       try { map.setFeatureState({ source: 'sectors', id: sel }, { selected: true }) } catch {}
+      setHollowArea(map, sel)
     }
   }
 
@@ -263,14 +268,15 @@ export default function MapCanvas() {
   useEffect(() => {
     if (!mapContainer.current || mapRef.current) return
     const startNight = useStore.getState().isNightMode
+    const cfg = cityCfg()
 
     const map = new maplibregl.Map({
       container: mapContainer.current,
       style: startNight ? STYLE_NIGHT : STYLE_DAY,
-      bounds: GURUGRAM_BOUNDS,
+      bounds: cfg.bounds,
       fitBoundsOptions: { padding: 70, pitch: 52, bearing: -12 },
-      maxBounds: GURUGRAM_MAX_BOUNDS,
-      minZoom: MIN_ZOOM,
+      maxBounds: cfg.maxBounds,
+      minZoom: cfg.minZoom,
       maxZoom: 17,
       pitch: 52,
       bearing: -12,
@@ -358,7 +364,7 @@ export default function MapCanvas() {
         animateLift(id, 1)
         useStore.getState().setHoveredSector(id)
 
-        const s = SECTORS.find(s => s.id === id)
+        const s = getPlaceById(id)
         if (s && tooltipRef.current) {
           tooltipRef.current
             .setLngLat(e.lngLat)
@@ -392,12 +398,13 @@ export default function MapCanvas() {
           return
         }
 
-        const sector = SECTORS.find(s => s.id === id)
+        const sector = getPlaceById(id)
         if (!sector) return
 
-        const prev = useStore.getState().selectedSectorId
-        if (prev) map.setFeatureState({ source: 'sectors', id: prev }, { selected: false })
-        map.setFeatureState({ source: 'sectors', id }, { selected: true })
+        // Selection visuals (highlight + hollow filter) are driven by the
+        // selectedSectorId effect — the click only updates the store. Note the
+        // focused area is filtered out of sectors-extrusion, so clicking it
+        // again falls through to the empty-click handler below (→ deselect).
         useStore.getState().setSelectedSector(id)
         useStore.getState().setPhase('focused')
 
@@ -406,7 +413,7 @@ export default function MapCanvas() {
           center: sector.coordinates,
           // Tighter zoom on mobile so the small map viewport still shows the
           // selected sector clearly above the bottom sheet.
-          zoom: isMobile ? ZOOM_FOCUS + 0.5 : ZOOM_FOCUS,
+          zoom: isMobile ? cityCfg().zoomFocus + 0.5 : cityCfg().zoomFocus,
           pitch: 55,
           bearing: -12,
           duration: 1400,
@@ -431,10 +438,10 @@ export default function MapCanvas() {
           }
           const prev = useStore.getState().selectedSectorId
           if (prev) {
-            map.setFeatureState({ source: 'sectors', id: prev }, { selected: false })
             useStore.getState().setSelectedSector(null)
             useStore.getState().setPhase('explore')
-            // Phase effect handles the recenter (with padding reset).
+            // Phase effect handles the recenter; selectedSectorId effect clears
+            // the highlight and restores the hollow area's fill.
           }
         }
       })
@@ -486,7 +493,7 @@ export default function MapCanvas() {
       }
       map.setPadding({ top: 0, bottom: 0, left: 0, right: 0 })
       const isMobile = window.innerWidth < 768
-      map.fitBounds(GURUGRAM_BOUNDS, {
+      map.fitBounds(cityCfg().bounds, {
         padding: isMobile ? 20 : 70,
         duration: 1600,
         pitch: 52,
@@ -497,6 +504,39 @@ export default function MapCanvas() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase])
 
+  // ─── CITY SWITCH ──────────────────────────────────────────────────────
+  // The map is created once (during 'landing', defaulting to Gurugram). When
+  // the user picks a different city at city-select, relocate: swap the source
+  // data, re-frame the camera and re-apply the locked bounds for the new city.
+  useEffect(() => {
+    const map = mapRef.current
+    if (!map || !ready.current) return
+    const cfg = cityCfg()
+
+    // Clear any prior city's selection/commute so nothing carries over.
+    useStore.getState().setSelectedSector(null)
+    useStore.getState().setCommuteTimes({})
+
+    const src = map.getSource('sectors') as maplibregl.GeoJSONSource | undefined
+    if (src) src.setData(cfg.getGeoJSON())
+
+    // Drop the lock while we travel, then re-apply it once settled — otherwise
+    // maxBounds from the old city would clamp the flight to the new one.
+    map.setMaxBounds(null)
+    map.setMinZoom(cfg.minZoom)
+    map.setPadding({ top: 0, bottom: 0, left: 0, right: 0 })
+    map.fitBounds(cfg.bounds, {
+      padding: window.innerWidth < 768 ? 20 : 70,
+      duration: 1600,
+      pitch: 52,
+      bearing: -12,
+      essential: true,
+    })
+    const t = setTimeout(() => { try { map.setMaxBounds(cfg.maxBounds) } catch {} }, 1700)
+    return () => clearTimeout(t)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedCity])
+
   // ─── LAYER SWITCHING ──────────────────────────────────────────────────
   useEffect(() => {
     const map = mapRef.current
@@ -504,6 +544,25 @@ export default function MapCanvas() {
     map.setPaintProperty('sectors-extrusion', 'fill-extrusion-color',
       extrusionColor(isNightMode, activeLayer, commuteTimes))
   }, [activeLayer, commuteTimes, isNightMode])
+
+  // ─── SELECTION SYNC ───────────────────────────────────────────────────
+  // Single source of truth for the focused area's visuals, regardless of how
+  // selection changed (map click, panel close, city switch): toggle the border
+  // highlight (feature-state) and the hollow filter that removes its fill so the
+  // basemap shows through, leaving only its outline.
+  useEffect(() => {
+    const map = mapRef.current
+    if (!map || !map.getSource('sectors')) return
+    const prev = prevSelRef.current
+    if (prev && prev !== selectedSectorId) {
+      try { map.setFeatureState({ source: 'sectors', id: prev }, { selected: false }) } catch {}
+    }
+    if (selectedSectorId) {
+      try { map.setFeatureState({ source: 'sectors', id: selectedSectorId }, { selected: true }) } catch {}
+    }
+    setHollowArea(map, selectedSectorId)
+    prevSelRef.current = selectedSectorId
+  }, [selectedSectorId])
 
   return (
     <div

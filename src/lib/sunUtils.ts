@@ -1,32 +1,42 @@
-// Sunrise/sunset calculation for Gurugram (28.46°N, 77.03°E), IST = UTC+5:30
+// Sunrise/sunset calculation for any Indian city, IST = UTC+5:30.
+// Pass the city's latitude & longitude; defaults to Gurugram for back-compat.
 const GURUGRAM_LAT = 28.46
+const GURUGRAM_LNG = 77.03
 const IST_OFFSET_HOURS = 5.5
+const STD_MERIDIAN = 82.5 // IST standard meridian (°E)
 
 function toRad(deg: number) { return deg * Math.PI / 180 }
 function toDeg(rad: number) { return rad * 180 / Math.PI }
 
-export function getGurugrmSunTimes(date = new Date()): { sunrise: number; sunset: number } {
+export function getSunTimes(
+  lat = GURUGRAM_LAT,
+  lng = GURUGRAM_LNG,
+  date = new Date(),
+): { sunrise: number; sunset: number } {
   const dayOfYear = Math.floor(
     (date.getTime() - new Date(date.getFullYear(), 0, 0).getTime()) / 86400000
   )
   // Solar declination
   const decl = toRad(23.45 * Math.sin(toRad(360 / 365 * (dayOfYear - 81))))
   // Hour angle at sunrise/sunset
-  const cosHA = -Math.tan(toRad(GURUGRAM_LAT)) * Math.tan(decl)
+  const cosHA = -Math.tan(toRad(lat)) * Math.tan(decl)
   const HA = toDeg(Math.acos(Math.max(-1, Math.min(1, cosHA))))
-  // Approximate solar noon correction for longitude (77.03°E, standard meridian 82.5°E)
-  const longitudeCorrection = (77.03 - 82.5) / 15 // hours
-  const solarNoon = 12 - longitudeCorrection // ~12.37 local solar time
+  // Longitude correction relative to the IST standard meridian
+  const longitudeCorrection = (lng - STD_MERIDIAN) / 15 // hours
+  const solarNoon = 12 - longitudeCorrection
 
-  const sunriseDecimalHour = solarNoon - HA / 15
-  const sunsetDecimalHour = solarNoon + HA / 15
-
-  // Convert to IST (these are already local approximations)
-  return { sunrise: sunriseDecimalHour, sunset: sunsetDecimalHour }
+  return {
+    sunrise: solarNoon - HA / 15,
+    sunset: solarNoon + HA / 15,
+  }
 }
 
-export function isNightInGurugram(date = new Date()): boolean {
-  const { sunrise, sunset } = getGurugrmSunTimes(date)
+export function isNight(
+  lat = GURUGRAM_LAT,
+  lng = GURUGRAM_LNG,
+  date = new Date(),
+): boolean {
+  const { sunrise, sunset } = getSunTimes(lat, lng, date)
   const istHour = (date.getUTCHours() + IST_OFFSET_HOURS) % 24
   const istMinutes = date.getUTCMinutes()
   const currentDecimal = istHour + istMinutes / 60
@@ -34,8 +44,12 @@ export function isNightInGurugram(date = new Date()): boolean {
   return currentDecimal < (sunrise + 0.5) || currentDecimal > (sunset + 0.5)
 }
 
-export function getSunsetLabel(date = new Date()): string {
-  const { sunrise, sunset } = getGurugrmSunTimes(date)
+export function getSunsetLabel(
+  lat = GURUGRAM_LAT,
+  lng = GURUGRAM_LNG,
+  date = new Date(),
+): string {
+  const { sunrise, sunset } = getSunTimes(lat, lng, date)
   const istHour = (date.getUTCHours() + IST_OFFSET_HOURS) % 24
   const istMinutes = date.getUTCMinutes()
   const current = istHour + istMinutes / 60

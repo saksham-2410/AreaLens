@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
+import { useStore } from '@/lib/store'
+import type { CityId } from '@/data/cities'
 
 // ── Marquee keyframes injected once ──────────────────────────────────────────
 const MARQUEE_CSS = `
@@ -47,11 +49,11 @@ const FEATURES = [
     desc: 'Side-by-side neighbourhood intelligence. Shortlist two sectors and see exactly how they differ.' },
 ]
 
-const CITIES = [
-  { name: 'Gurugram',   status: 'live', note: 'All 94 sectors' },
-  { name: 'Noida',      status: 'soon', note: 'Q3 2025' },
-  { name: 'Mumbai',     status: 'soon', note: 'Q4 2025' },
-  { name: 'Bengaluru',  status: 'soon', note: 'Q4 2025' },
+const CITIES: { name: string; status: 'live' | 'soon'; note: string; id?: CityId }[] = [
+  { name: 'Gurugram',   status: 'live', note: 'All 97 sectors', id: 'gurugram' },
+  { name: 'Bengaluru',  status: 'live', note: '27 areas',       id: 'bangalore' },
+  { name: 'Noida',      status: 'soon', note: 'Q3 2026' },
+  { name: 'Mumbai',     status: 'soon', note: 'Q4 2026' },
   { name: 'Hyderabad',  status: 'soon', note: '2026'    },
   { name: 'Pune',       status: 'soon', note: '2026'    },
   { name: 'Chennai',    status: 'soon', note: '2026'    },
@@ -131,6 +133,11 @@ function CtaButton({ onClick, label = 'EXPLORE YOUR CITY →', large = false }: 
 
 // ── Main Component ────────────────────────────────────────────────────────────
 export default function LandingPage({ onEnter }: { onEnter: () => void }) {
+  const setSelectedCity = useStore(s => s.setSelectedCity)
+  const setPhase = useStore(s => s.setPhase)
+  // Click a live city card → jump straight into that city's map.
+  const enterCity = (id: CityId) => { setSelectedCity(id); setPhase('explore') }
+
   // Inject marquee keyframe once
   useEffect(() => {
     const el = document.createElement('style')
@@ -219,18 +226,18 @@ export default function LandingPage({ onEnter }: { onEnter: () => void }) {
 
         {/* Hero body */}
         <motion.div
-          className="flex-1 flex flex-col justify-center py-10 max-w-7xl mx-auto w-full"
+          className="flex-1 flex flex-col justify-center py-4 sm:py-6 max-w-7xl mx-auto w-full"
           variants={stagger}
           initial="hidden"
           animate="show"
         >
           {/* Stacked mega-wordmark */}
-          <motion.div variants={fadeIn} className="overflow-hidden mb-4 sm:mb-6">
+          <motion.div variants={fadeIn} className="overflow-hidden mb-2 sm:mb-4">
             <motion.h1
               variants={fadeUp}
               style={{
                 fontFamily: 'var(--font-bebas)',
-                fontSize: 'clamp(5.5rem, 23vw, 21rem)',
+                fontSize: 'clamp(5rem, 18vw, 16rem)',
                 letterSpacing: '0.05em',
                 lineHeight: 0.82,
                 color: 'var(--text)',
@@ -243,7 +250,7 @@ export default function LandingPage({ onEnter }: { onEnter: () => void }) {
           </motion.div>
 
           {/* Ornamental rule */}
-          <motion.div variants={fadeIn} className="flex items-center gap-3 mb-8 sm:mb-10">
+          <motion.div variants={fadeIn} className="flex items-center gap-3 mb-6 sm:mb-8">
             <div className="h-px flex-1" style={{ background: 'var(--border)' }} />
             {[0,1,2,3,4].map(i => (
               <div
@@ -332,7 +339,7 @@ export default function LandingPage({ onEnter }: { onEnter: () => void }) {
 
         {/* Scroll indicator */}
         <motion.div
-          className="flex flex-col items-center gap-2 py-6"
+          className="flex flex-col items-center gap-2 py-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.4 }}
           transition={{ delay: 1.8, duration: 0.6 }}
@@ -555,11 +562,18 @@ export default function LandingPage({ onEnter }: { onEnter: () => void }) {
             {CITIES.map((city, i) => (
               <motion.div
                 key={city.name}
-                className="flex flex-col gap-2.5 p-5 rounded-sm"
+                role={city.status === 'live' ? 'button' : undefined}
+                tabIndex={city.status === 'live' ? 0 : undefined}
+                onClick={city.status === 'live' && city.id ? () => enterCity(city.id!) : undefined}
+                onKeyDown={city.status === 'live' && city.id
+                  ? (e) => { if (e.key === 'Enter' || e.key === ' ') enterCity(city.id!) }
+                  : undefined}
+                className="flex flex-col gap-2.5 p-5 rounded-sm transition-colors"
                 initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.06, duration: 0.5 }}
+                whileHover={city.status === 'live' ? { y: -3 } : undefined}
                 style={{
                   border: city.status === 'live'
                     ? '1px solid rgba(155,107,56,0.5)'
@@ -567,6 +581,7 @@ export default function LandingPage({ onEnter }: { onEnter: () => void }) {
                   background: city.status === 'live'
                     ? 'rgba(155,107,56,0.05)'
                     : 'transparent',
+                  cursor: city.status === 'live' ? 'pointer' : 'default',
                 }}
               >
                 {/* Status badge */}

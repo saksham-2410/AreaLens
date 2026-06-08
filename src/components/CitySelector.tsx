@@ -2,29 +2,35 @@
 
 import { motion } from 'framer-motion'
 import { useStore } from '@/lib/store'
+import { CITIES as CITY_REGISTRY, type CityId } from '@/data/cities'
 
 const CITIES = [
   {
-    id: 'gurugram',
-    name: 'Gurugram',
-    state: 'Haryana',
+    id: 'gurugram' as const,
+    name: CITY_REGISTRY.gurugram.name,
+    state: CITY_REGISTRY.gurugram.state,
     status: 'live',
     tagline: 'Full intelligence coverage active',
-    stats: [
-      { label: 'Sectors mapped', value: '94' },
-      { label: 'Data points',    value: '900+' },
-      { label: 'Avg AQI',        value: '148' },
-    ],
+    stats: CITY_REGISTRY.gurugram.stats,
   },
-  { id: 'delhi',     name: 'Delhi',     state: 'NCT',        status: 'soon', tagline: 'Coming soon' },
-  { id: 'noida',     name: 'Noida',     state: 'UP',         status: 'soon', tagline: 'Coming soon' },
-  { id: 'bangalore', name: 'Bengaluru', state: 'Karnataka',  status: 'soon', tagline: 'Coming soon' },
+  {
+    id: 'bangalore' as const,
+    name: CITY_REGISTRY.bangalore.name,
+    state: CITY_REGISTRY.bangalore.state,
+    status: 'live',
+    tagline: 'Area intelligence now live',
+    stats: CITY_REGISTRY.bangalore.stats,
+  },
+  { id: 'delhi', name: 'Delhi', state: 'NCT', status: 'soon', tagline: 'Coming soon' },
+  { id: 'noida', name: 'Noida', state: 'UP',  status: 'soon', tagline: 'Coming soon' },
 ]
 
 export default function CitySelector({ onSelect }: { onSelect: () => void }) {
   const setPhase = useStore(s => s.setPhase)
+  const setSelectedCity = useStore(s => s.setSelectedCity)
 
-  const handleSelect = () => {
+  const handleSelect = (id: CityId) => {
+    setSelectedCity(id)
     setPhase('explore')
     onSelect()
   }
@@ -84,7 +90,7 @@ export default function CitySelector({ onSelect }: { onSelect: () => void }) {
                 initial={{ opacity: 0, x: -14 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.18 + i * 0.07 }}
-                onClick={city.status === 'live' ? handleSelect : undefined}
+                onClick={city.status === 'live' ? () => handleSelect(city.id as CityId) : undefined}
                 disabled={city.status !== 'live'}
                 className="w-full text-left rounded-xl px-5 py-4 transition-all duration-200 group"
                 style={

@@ -1,9 +1,9 @@
-import { ALL_SECTORS as SECTORS } from '@/data/sectors'
+import { getCityConfig } from '@/data/cities'
+import { useStore } from '@/lib/store'
 
 // Mock commute times via straight-line distance + road factor
 // In the full build, this hits self-hosted OSRM
 const ROAD_FACTOR = 1.6 // approximate road distance vs straight-line
-const AVG_SPEED_KMH = 28 // Gurugram peak-hour average
 
 function haversineKm(lat1: number, lng1: number, lat2: number, lng2: number): number {
   const R = 6371
@@ -27,14 +27,15 @@ export function calcCommuteTimes(
   officeLng: number,
   officeLat: number
 ): Record<string, number> {
+  const cfg = getCityConfig(useStore.getState().selectedCity)
   const times: Record<string, number> = {}
-  for (const sector of SECTORS) {
-    const [sLng, sLat] = sector.coordinates
+  for (const place of cfg.places) {
+    const [sLng, sLat] = place.coordinates
     const straightKm = haversineKm(officeLat, officeLng, sLat, sLng)
     const roadKm = straightKm * ROAD_FACTOR
-    const hours = roadKm / AVG_SPEED_KMH
-    const noise = 0.9 + sectorHash(sector.id) * 0.2
-    times[sector.id] = Math.round(hours * 3600 * noise)
+    const hours = roadKm / cfg.avgSpeedKmh
+    const noise = 0.9 + sectorHash(place.id) * 0.2
+    times[place.id] = Math.round(hours * 3600 * noise)
   }
   return times
 }

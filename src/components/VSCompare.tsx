@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useStore } from '@/lib/store'
-import { getSectorById } from '@/data/sectors'
+import { getPlaceById } from '@/data/cities'
 import {
   Chart as ChartJS,
   RadialLinearScale,
@@ -41,7 +41,7 @@ export default function VSCompare() {
 
   const COLORS = isNightMode ? COLORS_NIGHT : COLORS_DAY
 
-  const sectors = compareSectors.map(id => getSectorById(id)).filter(Boolean)
+  const sectors = compareSectors.map(id => getPlaceById(id)).filter(Boolean)
 
   if (sectors.length === 0) return null
 

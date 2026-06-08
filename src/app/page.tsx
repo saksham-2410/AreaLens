@@ -1,10 +1,11 @@
 'use client'
 
-import { useEffect, useCallback, useRef } from 'react'
+import { useEffect, useCallback } from 'react'
 import dynamic from 'next/dynamic'
 import { AnimatePresence } from 'framer-motion'
 import { useStore } from '@/lib/store'
-import { isNightInGurugram } from '@/lib/sunUtils'
+import { isNight } from '@/lib/sunUtils'
+import { getCityConfig } from '@/data/cities'
 import Loader from '@/components/Loader'
 import CitySelector from '@/components/CitySelector'
 import HUD from '@/components/HUD'
@@ -21,40 +22,35 @@ export default function Home() {
   const { phase, setPhase, setNightMode, nightModeManualOverride } = useStore()
 
   const isNightMode = useStore(s => s.isNightMode)
+  const selectedCity = useStore(s => s.selectedCity)
 
-  // Auto night-mode based on Gurugram sunset time
+  // Auto night-mode based on the selected city's sunset time
   useEffect(() => {
     if (nightModeManualOverride) return
     const update = () => {
       if (!useStore.getState().nightModeManualOverride) {
-        setNightMode(isNightInGurugram())
+        const cfg = getCityConfig(useStore.getState().selectedCity)
+        setNightMode(isNight(cfg.lat, cfg.lng))
       }
     }
     update()
     const interval = setInterval(update, 60_000)
     return () => clearInterval(interval)
-  }, [nightModeManualOverride, setNightMode])
+  }, [nightModeManualOverride, setNightMode, selectedCity])
 
   // Drive the whole-app theme (champagne day ↔ dark night) off the night flag
   useEffect(() => {
     document.documentElement.classList.toggle('night', isNightMode)
   }, [isNightMode])
 
-  // Track whether the user has already chosen a city so that returning
-  // to the landing page skips the city-select screen and goes straight back
-  // to explore.
-  const cityChosenRef = useRef(false)
-
   const handleLoaderComplete = useCallback(() => {
     setPhase('landing')
   }, [setPhase])
 
+  // Always open the city selector from the landing CTA so the user can pick or
+  // switch cities (including changing away from the last-visited one).
   const handleLandingEnter = useCallback(() => {
-    if (cityChosenRef.current) {
-      setPhase('explore')
-    } else {
-      setPhase('city-select')
-    }
+    setPhase('city-select')
   }, [setPhase])
 
   const isMapVisible = phase !== 'loading'
@@ -79,7 +75,7 @@ export default function Home() {
       {/* City selector */}
       <AnimatePresence>
         {phase === 'city-select' && (
-          <CitySelector onSelect={() => { cityChosenRef.current = true }} />
+          <CitySelector onSelect={() => {}} />
         )}
       </AnimatePresence>
 

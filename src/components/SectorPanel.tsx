@@ -3,7 +3,8 @@
 import { motion, AnimatePresence, useMotionValue, animate, useDragControls } from 'framer-motion'
 import { useEffect, useRef, useState, useCallback } from 'react'
 import { useStore } from '@/lib/store'
-import { getSectorById, type Sector } from '@/data/sectors'
+import { type Sector } from '@/data/sectors'
+import { getPlaceById } from '@/data/cities'
 import VSCompare from './VSCompare'
 
 const STATUS_STYLE: Record<string, React.CSSProperties> = {
@@ -462,7 +463,7 @@ function MobileSheet({ sector, onDismissed }: { sector: Sector; onDismissed: () 
 
 function CompareSelectionHint() {
   const { isSelectingCompare, setIsSelectingCompare, setShowComparePanel, compareSectors } = useStore()
-  const firstSector = compareSectors[0] ? getSectorById(compareSectors[0]) : null
+  const firstSector = compareSectors[0] ? getPlaceById(compareSectors[0]) : null
   const firstLabel = firstSector?.sector_code ?? null
 
   return (
@@ -513,7 +514,7 @@ function CompareSelectionHint() {
 
 export default function SectorPanel() {
   const { selectedSectorId, showComparePanel, setSelectedSector, setPhase, setShowComparePanel } = useStore()
-  const sector = selectedSectorId ? getSectorById(selectedSectorId) : null
+  const sector = selectedSectorId ? getPlaceById(selectedSectorId) : null
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
