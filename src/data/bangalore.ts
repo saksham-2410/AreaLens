@@ -9,6 +9,7 @@
 //   F flooding · W water · P power · N noise/peace · C commute/connectivity
 // ───────────────────────────────────────────────────────────────────────────
 import type { Sector } from './sectors'
+import { BANGALORE_POLYGONS } from './bangalorePolygons'
 
 // ── 1–10 rating → app metric scale (identical to the Gurugram conversion) ──
 const rhu = (x: number) => Math.floor(x + 0.5)
@@ -258,7 +259,9 @@ function build(a: AreaRaw): Sector {
     vibe_tag: a.vibe,
     vibe_emoji: a.emoji,
     coordinates: [a.lng, a.lat],
-    polygon: blob(a.lng, a.lat, a.r, a.lng * 1000 + a.lat),
+    // Real Voronoi-tessellated cell clipped to the Bengaluru city boundary
+    // (see bangalorePolygons.ts); fall back to a generated blob if missing.
+    polygon: BANGALORE_POLYGONS[a.id] ?? blob(a.lng, a.lat, a.r, a.lng * 1000 + a.lat),
     score: a.score,
     metrics: {
       aqi: a.aqi,

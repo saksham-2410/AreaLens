@@ -24,8 +24,10 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "d3-delaunay": "^6.0.4",
     "eslint": "^9",
     "eslint-config-next": "16.2.7",
+    "polygon-clipping": "^0.15.7",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
