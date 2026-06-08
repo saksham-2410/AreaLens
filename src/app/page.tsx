@@ -4,7 +4,8 @@ import { useEffect, useCallback, useRef } from 'react'
 import dynamic from 'next/dynamic'
 import { AnimatePresence } from 'framer-motion'
 import { useStore } from '@/lib/store'
-import { isNightInGurugram } from '@/lib/sunUtils'
+import { isNight } from '@/lib/sunUtils'
+import { getCityConfig } from '@/data/cities'
 import Loader from '@/components/Loader'
 import CitySelector from '@/components/CitySelector'
 import HUD from '@/components/HUD'
@@ -21,19 +22,21 @@ export default function Home() {
   const { phase, setPhase, setNightMode, nightModeManualOverride } = useStore()
 
   const isNightMode = useStore(s => s.isNightMode)
+  const selectedCity = useStore(s => s.selectedCity)
 
-  // Auto night-mode based on Gurugram sunset time
+  // Auto night-mode based on the selected city's sunset time
   useEffect(() => {
     if (nightModeManualOverride) return
     const update = () => {
       if (!useStore.getState().nightModeManualOverride) {
-        setNightMode(isNightInGurugram())
+        const cfg = getCityConfig(useStore.getState().selectedCity)
+        setNightMode(isNight(cfg.lat, cfg.lng))
       }
     }
     update()
     const interval = setInterval(update, 60_000)
     return () => clearInterval(interval)
-  }, [nightModeManualOverride, setNightMode])
+  }, [nightModeManualOverride, setNightMode, selectedCity])
 
   // Drive the whole-app theme (champagne day ↔ dark night) off the night flag
   useEffect(() => {

@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import type { CityId } from '@/data/cities'
 
 export type AppPhase = 'loading' | 'landing' | 'city-select' | 'explore' | 'focused'
 export type ActiveLayer = 'none' | 'waterlogging' | 'tanker' | 'power' | 'noise' | 'commute'
@@ -7,6 +8,10 @@ interface AppStore {
   // Phase
   phase: AppPhase
   setPhase: (p: AppPhase) => void
+
+  // Selected city
+  selectedCity: CityId
+  setSelectedCity: (id: CityId) => void
 
   // Map interaction
   selectedSectorId: string | null
@@ -44,6 +49,9 @@ interface AppStore {
 export const useStore = create<AppStore>((set, get) => ({
   phase: 'loading',
   setPhase: (p) => set({ phase: p }),
+
+  selectedCity: 'gurugram',
+  setSelectedCity: (id) => set({ selectedCity: id }),
 
   selectedSectorId: null,
   hoveredSectorId: null,

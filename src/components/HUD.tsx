@@ -2,6 +2,7 @@
 
 import { useStore, ActiveLayer } from '@/lib/store'
 import { getSunsetLabel } from '@/lib/sunUtils'
+import { getCityConfig } from '@/data/cities'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
@@ -19,8 +20,9 @@ export default function HUD() {
     activeLayer, setActiveLayer,
     isNightMode, nightModeManualOverride, setNightModeOverride,
     compareSectors, setShowComparePanel, showComparePanel,
-    selectedSectorId, setSelectedSector, setPhase,
+    selectedSectorId, setSelectedSector, setPhase, selectedCity,
   } = useStore()
+  const city = getCityConfig(selectedCity)
 
   const [sunLabel, setSunLabel] = useState('')
   const [time, setTime] = useState('')
@@ -30,7 +32,7 @@ export default function HUD() {
 
   useEffect(() => {
     const update = () => {
-      setSunLabel(getSunsetLabel())
+      setSunLabel(getSunsetLabel(city.lat, city.lng))
       const now = new Date()
       const ist = new Date(now.getTime() + 5.5 * 60 * 60 * 1000)
       const h = ist.getUTCHours() % 12 || 12
@@ -40,7 +42,7 @@ export default function HUD() {
     update()
     const t = setInterval(update, 30_000)
     return () => clearInterval(t)
-  }, [])
+  }, [city.lat, city.lng])
 
   return (
     <>
@@ -96,7 +98,7 @@ export default function HUD() {
             className="text-[10px] tracking-widest hidden sm:block"
             style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}
           >
-            GURUGRAM
+            {city.name.toUpperCase()}
           </span>
         </button>
 
@@ -111,7 +113,7 @@ export default function HUD() {
             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-            All sectors
+            All {city.unitPlural}
           </motion.button>
         )}
       </div>
@@ -308,7 +310,7 @@ export default function HUD() {
               className="text-[10px] tracking-widest uppercase text-center"
               style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-dim)' }}
             >
-              Tap a sector to see its report
+              Tap {city.unit === 'Area' ? 'an' : 'a'} {city.unit.toLowerCase()} to see its report
             </p>
           </div>
         </motion.aside>

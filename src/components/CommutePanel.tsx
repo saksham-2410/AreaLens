@@ -3,20 +3,13 @@
 import { motion } from 'framer-motion'
 import { useStore } from '@/lib/store'
 import { calcCommuteTimes } from '@/lib/commuteUtils'
+import { getCityConfig, type OfficePreset } from '@/data/cities'
 import { useState, useEffect } from 'react'
 
-// Pre-set office locations in Gurugram/NCR
-const QUICK_OFFICES = [
-  { label: 'Cyber City / DLF Phase 2', coordinates: [77.0877, 28.4950] as [number, number] },
-  { label: 'Udyog Vihar', coordinates: [77.0780, 28.5035] as [number, number] },
-  { label: 'Golf Course Road Offices', coordinates: [77.1050, 28.4600] as [number, number] },
-  { label: 'Sohna Road Corridor', coordinates: [77.0500, 28.4200] as [number, number] },
-  { label: 'Connaught Place, Delhi', coordinates: [77.2090, 28.6315] as [number, number] },
-  { label: 'Sector 44 Corp Park', coordinates: [77.0720, 28.4530] as [number, number] },
-]
-
 export default function CommutePanel() {
-  const { activeLayer, setCommuteTimes, setActiveLayer, showComparePanel } = useStore()
+  const { activeLayer, setCommuteTimes, setActiveLayer, showComparePanel, selectedCity } = useStore()
+  // Pre-set office locations for the active city.
+  const QUICK_OFFICES = getCityConfig(selectedCity).offices
   const [calculating, setCalculating] = useState(false)
   const [lastOffice, setLastOffice] = useState<string | null>(null)
   const [windowWidth, setWindowWidth] = useState(
@@ -32,7 +25,7 @@ export default function CommutePanel() {
   const isActive = activeLayer === 'commute'
   if (!isActive) return null
 
-  const handleOfficeSelect = (office: typeof QUICK_OFFICES[0]) => {
+  const handleOfficeSelect = (office: OfficePreset) => {
     setCalculating(true)
     setLastOffice(office.label)
     setTimeout(() => {
