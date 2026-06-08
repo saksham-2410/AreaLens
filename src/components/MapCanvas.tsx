@@ -42,6 +42,7 @@ function extrusionColor(
   activeLayer: ActiveLayer,
   commuteTimes: Record<string, number>,
 ): maplibregl.ExpressionSpecification {
+  let base: maplibregl.ExpressionSpecification
   if (activeLayer === 'commute') {
     const cases = Object.entries(commuteTimes).flatMap(([id, secs]) => {
       if (!secs) return []
@@ -49,26 +50,29 @@ function extrusionColor(
     })
     // No office pin yet → no commute data. A 'case' needs ≥1 condition/output
     // pair, so fall back to the neutral score coloring until data exists.
-    if (cases.length === 0) return sectorScoreColor(isNight)
-    return ['case', ...cases, isNight ? '#5A4A2E' : '#C8A87A'] as maplibregl.ExpressionSpecification
-  }
-  if (activeLayer === 'waterlogging') {
-    return ['interpolate', ['linear'], ['get', 'waterlogging'],
+    base = cases.length === 0
+      ? sectorScoreColor(isNight)
+      : (['case', ...cases, isNight ? '#5A4A2E' : '#C8A87A'] as maplibregl.ExpressionSpecification)
+  } else if (activeLayer === 'waterlogging') {
+    base = ['interpolate', ['linear'], ['get', 'waterlogging'],
       1, '#A8C5D8', 2, '#7AAFC8', 3, '#9B85C0', 4, '#7B60A8', 5, '#5B3D88']
-  }
-  if (activeLayer === 'tanker') {
-    return ['interpolate', ['linear'], ['get', 'water_tanker'],
+  } else if (activeLayer === 'tanker') {
+    base = ['interpolate', ['linear'], ['get', 'water_tanker'],
       1, '#7AB88A', 2, '#A8C878', 3, '#D4B840', 4, '#C87830', 5, '#A83820']
-  }
-  if (activeLayer === 'power') {
-    return ['interpolate', ['linear'], ['get', 'power_outage'],
+  } else if (activeLayer === 'power') {
+    base = ['interpolate', ['linear'], ['get', 'power_outage'],
       0, '#7AB88A', 30, '#A8C878', 60, '#D4B840', 90, '#C87830', 120, '#A83820']
-  }
-  if (activeLayer === 'noise') {
-    return ['interpolate', ['linear'], ['get', 'noise_db'],
+  } else if (activeLayer === 'noise') {
+    base = ['interpolate', ['linear'], ['get', 'noise_db'],
       40, isNight ? '#5A4A2E' : '#C8B888', 55, '#C4A840', 65, '#C47820', 72, '#B84820', 80, '#8B2810']
+  } else {
+    base = sectorScoreColor(isNight)
   }
-  return sectorScoreColor(isNight)
+  // Focused/selected area is "un-highlighted": its fill goes fully transparent
+  // so only its border outline shows and the basemap reads through it. Applies
+  // across every overlay. Re-clicking the area restores the fill (see click).
+  return ['case', ['boolean', ['feature-state', 'selected'], false],
+    'rgba(0,0,0,0)', base] as maplibregl.ExpressionSpecification
 }
 
 function borderColor(isNight: boolean): maplibregl.ExpressionSpecification {
@@ -180,8 +184,9 @@ export default function MapCanvas() {
           'fill-color': isNight ? '#FFC65A' : '#E89030',
           'fill-opacity': [
             'case',
+            // Focused area is hollow → no glow fill (even while hovered).
+            ['boolean', ['feature-state', 'selected'], false], 0,
             ['boolean', ['feature-state', 'hovered'], false],  isNight ? 0.42 : 0.32,
-            ['boolean', ['feature-state', 'selected'], false], isNight ? 0.28 : 0.20,
             0,
           ],
           'fill-opacity-transition': { duration: 250, delay: 0 },
@@ -388,6 +393,14 @@ export default function MapCanvas() {
         if (!sector) return
 
         const prev = useStore.getState().selectedSectorId
+        // Click the already-focused area again → un-focus and re-highlight it
+        // (restore its fill). Mirrors the click-empty deselect.
+        if (prev === id) {
+          map.setFeatureState({ source: 'sectors', id }, { selected: false })
+          useStore.getState().setSelectedSector(null)
+          useStore.getState().setPhase('explore')
+          return
+        }
         if (prev) map.setFeatureState({ source: 'sectors', id: prev }, { selected: false })
         map.setFeatureState({ source: 'sectors', id }, { selected: true })
         useStore.getState().setSelectedSector(id)
