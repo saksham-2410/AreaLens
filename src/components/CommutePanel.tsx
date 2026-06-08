@@ -1,10 +1,9 @@
 'use client'
 
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useStore } from '@/lib/store'
-import { calcCommuteTimes, commuteLabel, commuteColor } from '@/lib/commuteUtils'
-import { ALL_SECTORS as SECTORS } from '@/data/sectors'
-import { useState } from 'react'
+import { calcCommuteTimes } from '@/lib/commuteUtils'
+import { useState, useEffect } from 'react'
 
 // Pre-set office locations in Gurugram/NCR
 const QUICK_OFFICES = [
@@ -17,17 +16,25 @@ const QUICK_OFFICES = [
 ]
 
 export default function CommutePanel() {
-  const { activeLayer, setCommuteTimes, setActiveLayer } = useStore()
+  const { activeLayer, setCommuteTimes, setActiveLayer, showComparePanel } = useStore()
   const [calculating, setCalculating] = useState(false)
   const [lastOffice, setLastOffice] = useState<string | null>(null)
-  const isActive = activeLayer === 'commute'
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== 'undefined' ? window.innerWidth : 0
+  )
 
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  const isActive = activeLayer === 'commute'
   if (!isActive) return null
 
   const handleOfficeSelect = (office: typeof QUICK_OFFICES[0]) => {
     setCalculating(true)
     setLastOffice(office.label)
-    // Simulate async (would hit OSRM in full build)
     setTimeout(() => {
       const times = calcCommuteTimes(office.coordinates[0], office.coordinates[1])
       setCommuteTimes(times)
@@ -35,12 +42,26 @@ export default function CommutePanel() {
     }, 600)
   }
 
+  // ── Responsive positioning ──────────────────────────────────────────────
+  // VSCompare: left=24px, width=420px → right edge 444px
+  // CommutePanel width: 340px
+  // Minimum viewport to fit side-by-side: 24 + 420 + 12 + 340 + 24 = 820px
+  //
+  // ≥820px desktop  → place CommutePanel right beside VSCompare (left=456)
+  // <820px (incl. mobile) → default bottom-left; CommutePanel renders on top
+  //   of VSCompare via DOM order (both z-30, CommutePanel is later in the tree)
+  const bottomPx = windowWidth < 640 ? 12 : 24
+  const leftPx =
+    windowWidth >= 820 && showComparePanel
+      ? 24 + 420 + 12   // 456 — immediately beside VSCompare
+      : windowWidth < 640 ? 12 : 24  // default bottom-left
+
   return (
     <motion.div
-      className="fixed left-3 bottom-3 sm:left-6 sm:bottom-6 z-30 glass-heavy rounded-2xl border border-[color:var(--border)] overflow-hidden"
+      className="fixed z-30 glass-heavy rounded-2xl border border-[color:var(--border)] overflow-hidden"
       style={{ width: 'min(340px, calc(100vw - 48px))' }}
-      initial={{ y: 60, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
+      initial={{ y: 60, opacity: 0, left: leftPx, bottom: bottomPx }}
+      animate={{ y: 0, opacity: 1, left: leftPx, bottom: bottomPx }}
       exit={{ y: 60, opacity: 0 }}
       transition={{ type: 'spring', damping: 28, stiffness: 280 }}
     >
@@ -53,7 +74,7 @@ export default function CommutePanel() {
         </span>
         <button
           onClick={() => setActiveLayer('none')}
-          className="text-slate-500 hover:text-slate-300 text-lg"
+          className="text-[color:var(--text-dim)] hover:text-[color:var(--text)] text-lg"
         >
           ×
         </button>
@@ -61,7 +82,7 @@ export default function CommutePanel() {
 
       <div className="p-4 space-y-3">
         <p
-          className="text-xs text-slate-400"
+          className="text-xs text-[color:var(--text-muted)]"
           style={{ fontFamily: 'var(--font-space-mono)' }}
         >
           Select your office. Sectors color by drive-time.
@@ -76,7 +97,7 @@ export default function CommutePanel() {
                 w-full text-left px-3 py-2.5 rounded-lg text-xs transition-all
                 ${lastOffice === office.label
                   ? 'bg-[color:var(--copper)]/10 border border-[color:var(--copper)]/40 text-[color:var(--copper-light)]'
-                  : 'bg-white/[0.03] border border-white/5 text-slate-400 hover:bg-white/[0.06] hover:text-slate-200'
+                  : 'border border-[color:var(--border)] text-[color:var(--text-muted)] hover:border-[color:var(--border-hover)] hover:text-[color:var(--text)]'
                 }
               `}
               style={{ fontFamily: 'var(--font-space-mono)' }}
@@ -89,7 +110,7 @@ export default function CommutePanel() {
                   <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse flex-shrink-0" />
                 )}
                 {lastOffice !== office.label && (
-                  <span className="w-1.5 h-1.5 rounded-full bg-white/10 flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[color:var(--border-hover)] flex-shrink-0" />
                 )}
                 {office.label}
               </div>
@@ -98,16 +119,16 @@ export default function CommutePanel() {
         </div>
 
         {/* Legend */}
-        <div className="flex gap-3 pt-2 border-t border-white/5">
+        <div className="flex gap-3 pt-2 border-t border-[color:var(--border)]">
           {[
             { color: '#10b981', label: '≤15 min' },
             { color: '#f59e0b', label: '15–30 min' },
             { color: '#ef4444', label: '>30 min' },
           ].map(item => (
             <div key={item.label} className="flex items-center gap-1.5">
-              <div className="w-2 h-2 rounded-full" style={{ background: item.color }} />
+              <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: item.color }} />
               <span
-                className="text-[10px] text-slate-500"
+                className="text-[10px] text-[color:var(--text-muted)]"
                 style={{ fontFamily: 'var(--font-space-mono)' }}
               >
                 {item.label}
@@ -117,10 +138,10 @@ export default function CommutePanel() {
         </div>
 
         <p
-          className="text-[10px] text-slate-600"
+          className="text-[10px] text-[color:var(--text-dim)]"
           style={{ fontFamily: 'var(--font-space-mono)' }}
         >
-          ⚠ Prototype: estimates via straight-line × road factor. Full build uses OSRM routing.
+          ⚠ Prototype: estimates via straight-line × road factor.
         </p>
       </div>
     </motion.div>

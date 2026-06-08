@@ -57,9 +57,16 @@ export default function HUD() {
           purely decorative since the layer switcher lives in the HUD itself. */}
       <div className="flex items-center gap-4">
         <button
-          onClick={() => setDrawerOpen(o => !o)}
+          onClick={() => {
+            if (window.innerWidth >= 640) {
+              setSelectedSector(null)
+              setPhase('landing')
+            } else {
+              setDrawerOpen(o => !o)
+            }
+          }}
           aria-label="Open menu"
-          className="flex items-center gap-2 sm:cursor-default"
+          className="flex items-center gap-2 group"
         >
           <div
             className="relative w-7 h-7 rounded-lg flex items-center justify-center"
@@ -80,7 +87,7 @@ export default function HUD() {
             </span>
           </div>
           <span
-            className="text-xl tracking-wider"
+            className="text-xl tracking-wider transition-opacity sm:group-hover:opacity-70"
             style={{ fontFamily: 'var(--font-bebas)', letterSpacing: '0.10em', color: 'var(--text)' }}
           >
             AREALENS

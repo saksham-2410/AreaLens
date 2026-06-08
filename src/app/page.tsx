@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useCallback } from 'react'
+import { useEffect, useCallback, useRef } from 'react'
 import dynamic from 'next/dynamic'
 import { AnimatePresence } from 'framer-motion'
 import { useStore } from '@/lib/store'
@@ -10,6 +10,8 @@ import CitySelector from '@/components/CitySelector'
 import HUD from '@/components/HUD'
 import SectorPanel from '@/components/SectorPanel'
 import CommutePanel from '@/components/CommutePanel'
+import LayerLegend from '@/components/LayerLegend'
+import LandingPage from '@/components/LandingPage'
 
 // MapCanvas must be client-only (WebGL needs browser)
 const MapCanvas = dynamic(() => import('@/components/MapCanvas'), { ssr: false })
@@ -38,8 +40,21 @@ export default function Home() {
     document.documentElement.classList.toggle('night', isNightMode)
   }, [isNightMode])
 
+  // Track whether the user has already chosen a city so that returning
+  // to the landing page skips the city-select screen and goes straight back
+  // to explore.
+  const cityChosenRef = useRef(false)
+
   const handleLoaderComplete = useCallback(() => {
-    setPhase('city-select')
+    setPhase('landing')
+  }, [setPhase])
+
+  const handleLandingEnter = useCallback(() => {
+    if (cityChosenRef.current) {
+      setPhase('explore')
+    } else {
+      setPhase('city-select')
+    }
   }, [setPhase])
 
   const isMapVisible = phase !== 'loading'
@@ -54,9 +69,18 @@ export default function Home() {
         {phase === 'loading' && <Loader onComplete={handleLoaderComplete} />}
       </AnimatePresence>
 
+      {/* Landing page */}
+      <AnimatePresence>
+        {phase === 'landing' && (
+          <LandingPage onEnter={handleLandingEnter} />
+        )}
+      </AnimatePresence>
+
       {/* City selector */}
       <AnimatePresence>
-        {phase === 'city-select' && <CitySelector onSelect={() => {}} />}
+        {phase === 'city-select' && (
+          <CitySelector onSelect={() => { cityChosenRef.current = true }} />
+        )}
       </AnimatePresence>
 
       {/* HUD */}
@@ -70,6 +94,11 @@ export default function Home() {
       {/* Commute overlay */}
       <AnimatePresence>
         {(phase === 'explore' || phase === 'focused') && <CommutePanel />}
+      </AnimatePresence>
+
+      {/* Layer legend (flooding / water / power / noise) */}
+      <AnimatePresence>
+        {(phase === 'explore' || phase === 'focused') && <LayerLegend />}
       </AnimatePresence>
 
       {/* Mobile notice */}

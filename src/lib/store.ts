@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-export type AppPhase = 'loading' | 'city-select' | 'explore' | 'focused'
+export type AppPhase = 'loading' | 'landing' | 'city-select' | 'explore' | 'focused'
 export type ActiveLayer = 'none' | 'waterlogging' | 'tanker' | 'power' | 'noise' | 'commute'
 
 interface AppStore {
@@ -37,6 +37,8 @@ interface AppStore {
   clearCompare: () => void
   showComparePanel: boolean
   setShowComparePanel: (val: boolean) => void
+  isSelectingCompare: boolean
+  setIsSelectingCompare: (val: boolean) => void
 }
 
 export const useStore = create<AppStore>((set, get) => ({
@@ -78,4 +80,6 @@ export const useStore = create<AppStore>((set, get) => ({
   clearCompare: () => set({ compareSectors: [] }),
   showComparePanel: false,
   setShowComparePanel: (val) => set({ showComparePanel: val }),
+  isSelectingCompare: false,
+  setIsSelectingCompare: (val) => set({ isSelectingCompare: val }),
 }))

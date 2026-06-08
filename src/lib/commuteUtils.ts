@@ -15,6 +15,14 @@ function haversineKm(lat1: number, lng1: number, lat2: number, lng2: number): nu
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
 }
 
+// Deterministic per-sector noise so repeated clicks on the same office
+// produce identical results. Hash the sector id to a stable float in [0,1).
+function sectorHash(id: string): number {
+  let h = 0
+  for (let i = 0; i < id.length; i++) h = (Math.imul(31, h) + id.charCodeAt(i)) | 0
+  return (h >>> 0) / 0x100000000
+}
+
 export function calcCommuteTimes(
   officeLng: number,
   officeLat: number
@@ -25,8 +33,7 @@ export function calcCommuteTimes(
     const straightKm = haversineKm(officeLat, officeLng, sLat, sLng)
     const roadKm = straightKm * ROAD_FACTOR
     const hours = roadKm / AVG_SPEED_KMH
-    // Add slight noise per sector for realism
-    const noise = 0.9 + Math.random() * 0.2
+    const noise = 0.9 + sectorHash(sector.id) * 0.2
     times[sector.id] = Math.round(hours * 3600 * noise)
   }
   return times

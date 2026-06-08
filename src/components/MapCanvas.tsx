@@ -370,10 +370,19 @@ export default function MapCanvas() {
         tooltipRef.current?.remove()
       })
 
-      // ── Click to focus ──
+      // ── Click to focus (or add to compare when in selection mode) ──
       map.on('click', 'sectors-extrusion', (e) => {
         const id = e.features?.[0]?.properties?.id as string
         if (!id) return
+
+        // Compare-selection mode: add the tapped sector and reopen the panel.
+        if (useStore.getState().isSelectingCompare) {
+          useStore.getState().addToCompare(id)
+          useStore.getState().setIsSelectingCompare(false)
+          useStore.getState().setShowComparePanel(true)
+          return
+        }
+
         const sector = SECTORS.find(s => s.id === id)
         if (!sector) return
 
@@ -401,10 +410,16 @@ export default function MapCanvas() {
         })
       })
 
-      // ── Click empty → deselect ──
+      // ── Click empty → deselect (or cancel compare selection) ──
       map.on('click', (e) => {
         const hits = map.queryRenderedFeatures(e.point, { layers: ['sectors-extrusion'] })
         if (hits.length === 0) {
+          // Cancel compare-selection mode without losing the compare panel.
+          if (useStore.getState().isSelectingCompare) {
+            useStore.getState().setIsSelectingCompare(false)
+            useStore.getState().setShowComparePanel(true)
+            return
+          }
           const prev = useStore.getState().selectedSectorId
           if (prev) {
             map.setFeatureState({ source: 'sectors', id: prev }, { selected: false })

@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, AnimatePresence, useMotionValue, animate, useDragControls } from 'framer-motion'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import { useStore } from '@/lib/store'
 import { getSectorById, type Sector } from '@/data/sectors'
 import VSCompare from './VSCompare'
@@ -44,7 +44,7 @@ function MetricRow({ label, value, unit, max, invert }: { label: string; value: 
   )
 }
 
-function SectorContent({ sector, onClose, onExpand, sheetExpanded }: { sector: Sector; onClose?: () => void; onExpand?: () => void; sheetExpanded?: boolean }) {
+function SectorContent({ sector, onClose, onExpand, sheetExpanded, onShowCompare }: { sector: Sector; onClose?: () => void; onExpand?: () => void; sheetExpanded?: boolean; onShowCompare?: () => void }) {
   // Track scroll position so the "more below" cue can fade out once the user
   // has scrolled past the Reality Check section.
   const scrollRef = useRef<HTMLDivElement | null>(null)
@@ -60,7 +60,7 @@ function SectorContent({ sector, onClose, onExpand, sheetExpanded }: { sector: S
     if (scrollRef.current) scrollRef.current.scrollTop = 0
   }, [sector.id])
 
-  const { compareSectors, addToCompare, removeFromCompare, setShowComparePanel } = useStore()
+  const { compareSectors, addToCompare, removeFromCompare } = useStore()
   const inCompare = compareSectors.includes(sector.id)
 
   const score = sector.score
@@ -164,7 +164,7 @@ function SectorContent({ sector, onClose, onExpand, sheetExpanded }: { sector: S
             <button
               onClick={() => {
                 if (inCompare) removeFromCompare(sector.id)
-                else { addToCompare(sector.id); setShowComparePanel(true) }
+                else { addToCompare(sector.id); onShowCompare?.() }
               }}
               className="text-xs px-3 py-1.5 rounded-lg transition-all duration-200"
               style={
@@ -368,6 +368,7 @@ function MobileSheet({ sector, onDismissed }: { sector: Sector; onDismissed: () 
   const draggedRef = useRef(false)
   const [vh, setVh] = useState(0)
   const [atFull, setAtFull] = useState(false)
+  const { setShowComparePanel } = useStore()
 
   // collapsedY = how far to push the (full-height) sheet down so only the peek
   // portion shows. y=0 → fully expanded; y=collapsedY → peek.
@@ -385,9 +386,15 @@ function MobileSheet({ sector, onDismissed }: { sector: Sector; onDismissed: () 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const snapPeek = () => { animate(y, collapsedY, { type: 'spring', damping: 32, stiffness: 320 }); setAtFull(false) }
-  const snapFull = () => { animate(y, 0,          { type: 'spring', damping: 32, stiffness: 320 }); setAtFull(true)  }
-  const snapDismiss = () => { animate(y, vh, { type: 'tween', duration: 0.25, ease: 'easeIn' }).then(onDismissed) }
+  const snapPeek = useCallback(() => { animate(y, collapsedY, { type: 'spring', damping: 32, stiffness: 320 }); setAtFull(false) }, [y, collapsedY])
+  const snapFull = useCallback(() => { animate(y, 0, { type: 'spring', damping: 32, stiffness: 320 }); setAtFull(true) }, [y])
+  const snapDismiss = useCallback(() => { animate(y, vh, { type: 'tween', duration: 0.25, ease: 'easeIn' }).then(onDismissed) }, [y, vh, onDismissed])
+
+  const handleShowCompare = useCallback(() => {
+    // Dismiss the sheet first so the compare panel has clear space
+    snapDismiss()
+    setTimeout(() => setShowComparePanel(true), 280)
+  }, [snapDismiss, setShowComparePanel])
 
   const onDragEnd = (_: unknown, info: { velocity: { y: number } }) => {
     const cur = y.get()
@@ -443,13 +450,69 @@ function MobileSheet({ sector, onDismissed }: { sector: Sector; onDismissed: () 
           </svg>
         </button>
       </div>
-      <SectorContent sector={sector} onExpand={snapFull} sheetExpanded={atFull} />
+      <SectorContent
+        sector={sector}
+        onExpand={snapFull}
+        sheetExpanded={atFull}
+        onShowCompare={handleShowCompare}
+      />
     </motion.div>
   )
 }
 
+function CompareSelectionHint() {
+  const { isSelectingCompare, setIsSelectingCompare, setShowComparePanel, compareSectors } = useStore()
+  const firstSector = compareSectors[0] ? getSectorById(compareSectors[0]) : null
+  const firstLabel = firstSector?.sector_code ?? null
+
+  return (
+    <AnimatePresence>
+      {isSelectingCompare && (
+        <motion.div
+          className="fixed z-40 flex items-center gap-2 px-3 py-2.5 rounded-full"
+          style={{
+            bottom: 32,
+            left: '50%',
+            background: 'var(--bg-panel)',
+            border: '1px solid rgba(155,107,56,0.35)',
+            backdropFilter: 'blur(20px)',
+            boxShadow: '0 8px 28px rgba(0,0,0,0.22)',
+          }}
+          initial={{ y: 16, opacity: 0, scale: 0.95, x: '-50%' }}
+          animate={{ y: 0, opacity: 1, scale: 1, x: '-50%' }}
+          exit={{ y: 16, opacity: 0, scale: 0.95, x: '-50%' }}
+          transition={{ type: 'spring', damping: 28, stiffness: 300 }}
+        >
+          <span
+            className="w-2 h-2 rounded-full animate-pulse flex-shrink-0"
+            style={{ background: 'var(--copper)' }}
+          />
+          <span
+            className="text-[11px] whitespace-nowrap"
+            style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}
+          >
+            {firstLabel ? `Compare with ${firstLabel} — tap a sector` : 'Tap a sector on the map'}
+          </span>
+          <button
+            onClick={() => { setIsSelectingCompare(false); setShowComparePanel(true) }}
+            className="text-xs px-2.5 py-1 rounded-full transition-all flex-shrink-0 ml-1"
+            style={{
+              background: 'rgba(155,107,56,0.10)',
+              border: '1px solid rgba(155,107,56,0.22)',
+              color: 'var(--text-dim)',
+              fontFamily: 'var(--font-mono)',
+            }}
+          >
+            Cancel
+          </button>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  )
+}
+
 export default function SectorPanel() {
-  const { selectedSectorId, showComparePanel, setSelectedSector, setPhase } = useStore()
+  const { selectedSectorId, showComparePanel, setSelectedSector, setPhase, setShowComparePanel } = useStore()
   const sector = selectedSectorId ? getSectorById(selectedSectorId) : null
   const [isMobile, setIsMobile] = useState(false)
 
@@ -491,7 +554,11 @@ export default function SectorPanel() {
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 32, stiffness: 280, mass: 0.9 }}
             >
-              <SectorContent sector={sector} onClose={dismiss} />
+              <SectorContent
+                sector={sector}
+                onClose={dismiss}
+                onShowCompare={() => setShowComparePanel(true)}
+              />
             </motion.div>
           )
         )}
@@ -500,6 +567,8 @@ export default function SectorPanel() {
       <AnimatePresence>
         {showComparePanel && <VSCompare />}
       </AnimatePresence>
+
+      <CompareSelectionHint />
     </>
   )
 }
