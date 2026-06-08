@@ -120,7 +120,7 @@ function tooltipHTML(s: typeof SECTORS[number], isNight: boolean): string {
   const c = isNight
     ? { main: '#F3E9D8', vibe: '#B6A284', accent: '#D8A85A', price: '#E8C474', sub: '#7C6A50', div: 'rgba(216,168,90,0.18)' }
     : { main: '#2C1A0E', vibe: '#9B7A50', accent: '#9B6B38', price: '#6B3A12', sub: '#B09070', div: 'rgba(155,107,56,0.15)' }
-  const aqiColor = s.metrics.aqi > 160 ? '#B83420' : s.metrics.aqi > 140 ? '#C07820' : '#1E7A4A'
+  const aqiColor = s.metrics.aqi > 110 ? '#B83420' : s.metrics.aqi > 100 ? '#C07820' : '#1E7A4A'
   return `
     <div style="font-family:'DM Sans',sans-serif">
       <div style="font-size:10px;color:${c.vibe};letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px">

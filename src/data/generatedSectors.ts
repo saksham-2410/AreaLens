@@ -16,8 +16,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.9708, 28.37463],
     polygon: SECTOR_POLYGONS['sec-78'] ?? [],
     score: 50,
-    metrics: { aqi: 184, water_tanker_reliance: 4.1, power_outage_mins: 79, noise_db: 49, waterlogging_level: 3 },
-    radar: { air_quality: 38, water_reliability: 22, power_reliability: 61, noise_peace: 62, connectivity: 84, infra_health: 68 },
+    metrics: { aqi: 100, water_tanker_reliance: 3.5, power_outage_mins: 68, noise_db: 64, waterlogging_level: 4 },
+    radar: { air_quality: 70, water_reliability: 40, power_reliability: 50, noise_peace: 60, connectivity: 50, infra_health: 68 },
     amenities: {
       hospitals: [{ name: "Civil Hospital Gurgaon", distance_km: 4.3, rating: 4.6 }],
       schools: [{ name: "New Era Public School", distance_km: 2.2, rating: 4.6 }],
@@ -34,7 +34,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Water tanker dependence remains a daily reality","Limited commercial/retail amenities","Metro 5+ years out"],
       opportunities: ["Dwarka Expressway access","New schools and hospitals opening","Lower entry price"],
     },
-    price_range: { buy_psf: [6231, 8268], rent_2bhk: [15119, 25166] },
+    price_range: { buy_psf: [8000, 12000], rent_2bhk: [18000, 45000] },
   },
   {
     id: 'sec-80',
@@ -45,8 +45,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.9625, 28.36889],
     polygon: SECTOR_POLYGONS['sec-80'] ?? [],
     score: 66,
-    metrics: { aqi: 179, water_tanker_reliance: 3.6, power_outage_mins: 89, noise_db: 49, waterlogging_level: 3 },
-    radar: { air_quality: 41, water_reliability: 30, power_reliability: 56, noise_peace: 62, connectivity: 81, infra_health: 70 },
+    metrics: { aqi: 100, water_tanker_reliance: 3.5, power_outage_mins: 68, noise_db: 64, waterlogging_level: 4 },
+    radar: { air_quality: 70, water_reliability: 40, power_reliability: 50, noise_peace: 60, connectivity: 50, infra_health: 70 },
     amenities: {
       hospitals: [{ name: "Sarvodaya Hospital", distance_km: 4.4, rating: 4.2 }],
       schools: [{ name: "Govt Sr Sec School", distance_km: 1.6, rating: 4.4 }],
@@ -63,7 +63,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Water tanker dependence remains a daily reality","Limited commercial/retail amenities","Metro 5+ years out"],
       opportunities: ["Dwarka Expressway access","New schools and hospitals opening","Lower entry price"],
     },
-    price_range: { buy_psf: [5834, 8866], rent_2bhk: [15831, 22998] },
+    price_range: { buy_psf: [8000, 12000], rent_2bhk: [18000, 45000] },
   },
   {
     id: 'sec-17',
@@ -74,8 +74,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.06119, 28.47721],
     polygon: SECTOR_POLYGONS['sec-17'] ?? [],
     score: 68,
-    metrics: { aqi: 157, water_tanker_reliance: 2.8, power_outage_mins: 54, noise_db: 67, waterlogging_level: 4 },
-    radar: { air_quality: 52, water_reliability: 39, power_reliability: 73, noise_peace: 26, connectivity: 71, infra_health: 87 },
+    metrics: { aqi: 102, water_tanker_reliance: 1.5, power_outage_mins: 56, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 69, water_reliability: 70, power_reliability: 60, noise_peace: 40, connectivity: 60, infra_health: 87 },
     amenities: {
       hospitals: [{ name: "Cygnus Hospital", distance_km: 4.4, rating: 4.5 }],
       schools: [{ name: "Amity International School", distance_km: 3.5, rating: 4.4 }],
@@ -91,7 +91,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Limited room for new amenities","Older plot/builder-floor stock"],
       opportunities: ["Established neighborhood feel","Stable resale market","Proximity to commercial spine"],
     },
-    price_range: { buy_psf: [8933, 12917], rent_2bhk: [28611, 34675] },
+    price_range: { buy_psf: [11000, 15000], rent_2bhk: [15000, 35000] },
   },
   {
     id: 'sec-25',
@@ -102,8 +102,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.08643, 28.48497],
     polygon: SECTOR_POLYGONS['sec-25'] ?? [],
     score: 80,
-    metrics: { aqi: 159, water_tanker_reliance: 2.1, power_outage_mins: 34, noise_db: 53, waterlogging_level: 3 },
-    radar: { air_quality: 51, water_reliability: 54, power_reliability: 83, noise_peace: 54, connectivity: 90, infra_health: 69 },
+    metrics: { aqi: 95, water_tanker_reliance: 2.5, power_outage_mins: 56, noise_db: 68, waterlogging_level: 4 },
+    radar: { air_quality: 73, water_reliability: 60, power_reliability: 60, noise_peace: 50, connectivity: 80, infra_health: 69 },
     amenities: {
       hospitals: [{ name: "Fortis Memorial Research Institute", distance_km: 3.8, rating: 4.0 }],
       schools: [{ name: "Pathways World School", distance_km: 3.8, rating: 4.1 }],
@@ -120,7 +120,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Old high-rise stock requires maintenance attention","Limited new amenity infusion"],
       opportunities: ["Rental demand from Cyber City corporate ecosystem","High resale liquidity"],
     },
-    price_range: { buy_psf: [16067, 19966], rent_2bhk: [53297, 63475] },
+    price_range: { buy_psf: [14000, 22000], rent_2bhk: [25000, 75000] },
   },
   {
     id: 'sec-24',
@@ -131,8 +131,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.1015, 28.49169],
     polygon: SECTOR_POLYGONS['sec-24'] ?? [],
     score: 66,
-    metrics: { aqi: 166, water_tanker_reliance: 2.9, power_outage_mins: 74, noise_db: 55, waterlogging_level: 2 },
-    radar: { air_quality: 47, water_reliability: 45, power_reliability: 63, noise_peace: 50, connectivity: 78, infra_health: 45 },
+    metrics: { aqi: 95, water_tanker_reliance: 2.5, power_outage_mins: 56, noise_db: 68, waterlogging_level: 4 },
+    radar: { air_quality: 73, water_reliability: 60, power_reliability: 60, noise_peace: 50, connectivity: 80, infra_health: 45 },
     amenities: {
       hospitals: [{ name: "Park Hospital", distance_km: 4.2, rating: 4.5 }],
       schools: [{ name: "Amity International School", distance_km: 3.7, rating: 4.1 }],
@@ -148,7 +148,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Limited room for new amenities","Older plot/builder-floor stock"],
       opportunities: ["Established neighborhood feel","Stable resale market","Proximity to commercial spine"],
     },
-    price_range: { buy_psf: [8375, 12100], rent_2bhk: [26953, 32461] },
+    price_range: { buy_psf: [13000, 18000], rent_2bhk: [25000, 65000] },
   },
   {
     id: 'sec-25a',
@@ -159,8 +159,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.09061, 28.49509],
     polygon: SECTOR_POLYGONS['sec-25a'] ?? [],
     score: 78,
-    metrics: { aqi: 154, water_tanker_reliance: 1.2, power_outage_mins: 48, noise_db: 62, waterlogging_level: 3 },
-    radar: { air_quality: 53, water_reliability: 68, power_reliability: 76, noise_peace: 36, connectivity: 56, infra_health: 83 },
+    metrics: { aqi: 95, water_tanker_reliance: 2.5, power_outage_mins: 56, noise_db: 68, waterlogging_level: 4 },
+    radar: { air_quality: 73, water_reliability: 60, power_reliability: 60, noise_peace: 50, connectivity: 80, infra_health: 83 },
     amenities: {
       hospitals: [{ name: "Paras Hospital", distance_km: 4.1, rating: 4.4 }],
       schools: [{ name: "Heritage Xperiential", distance_km: 2.2, rating: 4.2 }],
@@ -177,7 +177,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Old high-rise stock requires maintenance attention","Limited new amenity infusion"],
       opportunities: ["Rental demand from Cyber City corporate ecosystem","High resale liquidity"],
     },
-    price_range: { buy_psf: [16967, 21241], rent_2bhk: [80637, 89229] },
+    price_range: { buy_psf: [14000, 22000], rent_2bhk: [25000, 75000] },
   },
   {
     id: 'sec-29',
@@ -188,8 +188,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.0682, 28.46769],
     polygon: SECTOR_POLYGONS['sec-29'] ?? [],
     score: 69,
-    metrics: { aqi: 148, water_tanker_reliance: 3.3, power_outage_mins: 42, noise_db: 66, waterlogging_level: 2 },
-    radar: { air_quality: 56, water_reliability: 39, power_reliability: 79, noise_peace: 28, connectivity: 81, infra_health: 51 },
+    metrics: { aqi: 92, water_tanker_reliance: 3.5, power_outage_mins: 68, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 74, water_reliability: 50, power_reliability: 50, noise_peace: 40, connectivity: 80, infra_health: 51 },
     amenities: {
       hospitals: [{ name: "Manipal Hospital", distance_km: 3.9, rating: 4.6 }],
       schools: [{ name: "Amity International School", distance_km: 1.5, rating: 4.6 }],
@@ -205,7 +205,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Limited room for new amenities","Older plot/builder-floor stock"],
       opportunities: ["Established neighborhood feel","Stable resale market","Proximity to commercial spine"],
     },
-    price_range: { buy_psf: [10366, 12419], rent_2bhk: [22683, 31666] },
+    price_range: { buy_psf: [14000, 20750], rent_2bhk: [25000, 50000] },
   },
   {
     id: 'sec-42',
@@ -216,8 +216,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.10724, 28.45867],
     polygon: SECTOR_POLYGONS['sec-42'] ?? [],
     score: 85,
-    metrics: { aqi: 135, water_tanker_reliance: 1.9, power_outage_mins: 24, noise_db: 63, waterlogging_level: 1 },
-    radar: { air_quality: 63, water_reliability: 65, power_reliability: 88, noise_peace: 34, connectivity: 85, infra_health: 47 },
+    metrics: { aqi: 85, water_tanker_reliance: 2.5, power_outage_mins: 44, noise_db: 64, waterlogging_level: 3 },
+    radar: { air_quality: 78, water_reliability: 60, power_reliability: 70, noise_peace: 60, connectivity: 90, infra_health: 47 },
     amenities: {
       hospitals: [{ name: "Artemis Hospital", distance_km: 4.4, rating: 4.0 }],
       schools: [{ name: "GD Goenka World School", distance_km: 2.3, rating: 4.5 }],
@@ -234,7 +234,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Old high-rise stock requires maintenance attention","Limited new amenity infusion"],
       opportunities: ["Rental demand from Cyber City corporate ecosystem","High resale liquidity"],
     },
-    price_range: { buy_psf: [17091, 20703], rent_2bhk: [50329, 61947] },
+    price_range: { buy_psf: [12000, 20000], rent_2bhk: [40000, 150000] },
   },
   {
     id: 'sec-52a',
@@ -245,8 +245,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.08767, 28.44211],
     polygon: SECTOR_POLYGONS['sec-52a'] ?? [],
     score: 59,
-    metrics: { aqi: 154, water_tanker_reliance: 4.0, power_outage_mins: 77, noise_db: 68, waterlogging_level: 2 },
-    radar: { air_quality: 53, water_reliability: 28, power_reliability: 62, noise_peace: 24, connectivity: 81, infra_health: 71 },
+    metrics: { aqi: 95, water_tanker_reliance: 3.5, power_outage_mins: 68, noise_db: 68, waterlogging_level: 5 },
+    radar: { air_quality: 73, water_reliability: 50, power_reliability: 50, noise_peace: 50, connectivity: 70, infra_health: 71 },
     amenities: {
       hospitals: [{ name: "Park Hospital", distance_km: 1.0, rating: 4.6 }],
       schools: [{ name: "Ryan International", distance_km: 0.8, rating: 4.2 }],
@@ -263,7 +263,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Severe peak-hour congestion","Construction dust through 2027","Patchy infrastructure"],
       opportunities: ["Elevated road completion","Sohna Elevated Corridor","New mall openings"],
     },
-    price_range: { buy_psf: [9240, 11125], rent_2bhk: [21388, 30328] },
+    price_range: { buy_psf: [10500, 14900], rent_2bhk: [16000, 90000] },
   },
   {
     id: 'sec-53',
@@ -274,8 +274,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.0959, 28.44448],
     polygon: SECTOR_POLYGONS['sec-53'] ?? [],
     score: 82,
-    metrics: { aqi: 158, water_tanker_reliance: 1.6, power_outage_mins: 30, noise_db: 54, waterlogging_level: 1 },
-    radar: { air_quality: 51, water_reliability: 70, power_reliability: 85, noise_peace: 52, connectivity: 51, infra_health: 59 },
+    metrics: { aqi: 90, water_tanker_reliance: 3.5, power_outage_mins: 56, noise_db: 68, waterlogging_level: 3 },
+    radar: { air_quality: 76, water_reliability: 50, power_reliability: 60, noise_peace: 50, connectivity: 80, infra_health: 59 },
     amenities: {
       hospitals: [{ name: "Medanta The Medicity", distance_km: 1.6, rating: 4.2 }],
       schools: [{ name: "Heritage Xperiential", distance_km: 2.1, rating: 4.3 }],
@@ -291,7 +291,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Premium pricing limits ROI for new buyers","Occasional waterlogging at chowks during heavy monsoon"],
       opportunities: ["Steady rental yields from MNC executives","Brand-name developer projects retain resale value"],
     },
-    price_range: { buy_psf: [21633, 23819], rent_2bhk: [77945, 84229] },
+    price_range: { buy_psf: [18500, 34000], rent_2bhk: [40000, 80000] },
   },
   {
     id: 'sec-101',
@@ -302,8 +302,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.98223, 28.46846],
     polygon: SECTOR_POLYGONS['sec-101'] ?? [],
     score: 62,
-    metrics: { aqi: 193, water_tanker_reliance: 4.2, power_outage_mins: 73, noise_db: 65, waterlogging_level: 5 },
-    radar: { air_quality: 34, water_reliability: 15, power_reliability: 64, noise_peace: 30, connectivity: 62, infra_health: 77 },
+    metrics: { aqi: 105, water_tanker_reliance: 4.5, power_outage_mins: 80, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 67, water_reliability: 40, power_reliability: 40, noise_peace: 40, connectivity: 50, infra_health: 77 },
     amenities: {
       hospitals: [{ name: "Sunrise Hospital", distance_km: 2.3, rating: 4.0 }],
       schools: [{ name: "Govt Sr Sec School", distance_km: 0.9, rating: 4.0 }],
@@ -320,7 +320,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Civic infrastructure lags real estate","Dust and noise from ongoing construction","Few operational schools/hospitals nearby"],
       opportunities: ["Direct airport access via DXP","Significant new commercial planning","Lower entry into branded-developer projects"],
     },
-    price_range: { buy_psf: [8690, 10889], rent_2bhk: [16284, 26350] },
+    price_range: { buy_psf: [11000, 14000], rent_2bhk: [22000, 50000] },
   },
   {
     id: 'sec-102',
@@ -331,8 +331,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.96966, 28.47516],
     polygon: SECTOR_POLYGONS['sec-102'] ?? [],
     score: 70,
-    metrics: { aqi: 180, water_tanker_reliance: 4.8, power_outage_mins: 92, noise_db: 51, waterlogging_level: 4 },
-    radar: { air_quality: 40, water_reliability: 15, power_reliability: 54, noise_peace: 58, connectivity: 60, infra_health: 83 },
+    metrics: { aqi: 105, water_tanker_reliance: 4.5, power_outage_mins: 92, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 67, water_reliability: 40, power_reliability: 30, noise_peace: 40, connectivity: 60, infra_health: 83 },
     amenities: {
       hospitals: [{ name: "Sarvodaya Hospital", distance_km: 3.9, rating: 4.1 }],
       schools: [{ name: "Govt Sr Sec School", distance_km: 1.2, rating: 3.9 }],
@@ -349,7 +349,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Civic infrastructure lags real estate","Dust and noise from ongoing construction","Few operational schools/hospitals nearby"],
       opportunities: ["Direct airport access via DXP","Significant new commercial planning","Lower entry into branded-developer projects"],
     },
-    price_range: { buy_psf: [7596, 11011], rent_2bhk: [18634, 28861] },
+    price_range: { buy_psf: [13600, 17400], rent_2bhk: [25000, 65000] },
   },
   {
     id: 'sec-102a',
@@ -360,8 +360,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.97728, 28.48487],
     polygon: SECTOR_POLYGONS['sec-102a'] ?? [],
     score: 60,
-    metrics: { aqi: 166, water_tanker_reliance: 4.8, power_outage_mins: 79, noise_db: 52, waterlogging_level: 3 },
-    radar: { air_quality: 47, water_reliability: 15, power_reliability: 61, noise_peace: 56, connectivity: 88, infra_health: 66 },
+    metrics: { aqi: 105, water_tanker_reliance: 4.5, power_outage_mins: 92, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 67, water_reliability: 40, power_reliability: 30, noise_peace: 40, connectivity: 60, infra_health: 66 },
     amenities: {
       hospitals: [{ name: "Aarvy Healthcare", distance_km: 1.2, rating: 4.1 }],
       schools: [{ name: "New Era Public School", distance_km: 3.5, rating: 4.1 }],
@@ -378,7 +378,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Civic infrastructure lags real estate","Dust and noise from ongoing construction","Few operational schools/hospitals nearby"],
       opportunities: ["Direct airport access via DXP","Significant new commercial planning","Lower entry into branded-developer projects"],
     },
-    price_range: { buy_psf: [9176, 13312], rent_2bhk: [17717, 25979] },
+    price_range: { buy_psf: [13600, 17400], rent_2bhk: [25000, 65000] },
   },
   {
     id: 'sec-103',
@@ -389,8 +389,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.98558, 28.49469],
     polygon: SECTOR_POLYGONS['sec-103'] ?? [],
     score: 54,
-    metrics: { aqi: 165, water_tanker_reliance: 4.1, power_outage_mins: 83, noise_db: 63, waterlogging_level: 5 },
-    radar: { air_quality: 48, water_reliability: 15, power_reliability: 59, noise_peace: 34, connectivity: 85, infra_health: 84 },
+    metrics: { aqi: 108, water_tanker_reliance: 4.5, power_outage_mins: 80, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 66, water_reliability: 40, power_reliability: 40, noise_peace: 40, connectivity: 60, infra_health: 84 },
     amenities: {
       hospitals: [{ name: "Sarvodaya Hospital", distance_km: 4.5, rating: 4.5 }],
       schools: [{ name: "Govt Sr Sec School", distance_km: 1.9, rating: 4.5 }],
@@ -407,7 +407,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Civic infrastructure lags real estate","Dust and noise from ongoing construction","Few operational schools/hospitals nearby"],
       opportunities: ["Direct airport access via DXP","Significant new commercial planning","Lower entry into branded-developer projects"],
     },
-    price_range: { buy_psf: [8253, 10380], rent_2bhk: [18748, 24132] },
+    price_range: { buy_psf: [11000, 15000], rent_2bhk: [24000, 55000] },
   },
   {
     id: 'sec-104',
@@ -418,8 +418,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.99611, 28.48028],
     polygon: SECTOR_POLYGONS['sec-104'] ?? [],
     score: 67,
-    metrics: { aqi: 175, water_tanker_reliance: 4.5, power_outage_mins: 75, noise_db: 60, waterlogging_level: 4 },
-    radar: { air_quality: 43, water_reliability: 15, power_reliability: 63, noise_peace: 40, connectivity: 81, infra_health: 71 },
+    metrics: { aqi: 105, water_tanker_reliance: 4.5, power_outage_mins: 80, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 67, water_reliability: 40, power_reliability: 40, noise_peace: 40, connectivity: 60, infra_health: 71 },
     amenities: {
       hospitals: [{ name: "Sarvodaya Hospital", distance_km: 2.4, rating: 3.9 }],
       schools: [{ name: "Holy Child School", distance_km: 2.3, rating: 4.3 }],
@@ -436,7 +436,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Civic infrastructure lags real estate","Dust and noise from ongoing construction","Few operational schools/hospitals nearby"],
       opportunities: ["Direct airport access via DXP","Significant new commercial planning","Lower entry into branded-developer projects"],
     },
-    price_range: { buy_psf: [7729, 12209], rent_2bhk: [16914, 24425] },
+    price_range: { buy_psf: [14200, 16000], rent_2bhk: [8500, 55000] },
   },
   {
     id: 'sec-105',
@@ -447,8 +447,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.00843, 28.49443],
     polygon: SECTOR_POLYGONS['sec-105'] ?? [],
     score: 54,
-    metrics: { aqi: 194, water_tanker_reliance: 4.2, power_outage_mins: 105, noise_db: 66, waterlogging_level: 4 },
-    radar: { air_quality: 33, water_reliability: 16, power_reliability: 48, noise_peace: 28, connectivity: 77, infra_health: 84 },
+    metrics: { aqi: 110, water_tanker_reliance: 4.5, power_outage_mins: 80, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 65, water_reliability: 40, power_reliability: 40, noise_peace: 40, connectivity: 60, infra_health: 84 },
     amenities: {
       hospitals: [{ name: "Civil Hospital Gurgaon", distance_km: 2.7, rating: 4.4 }],
       schools: [{ name: "New Era Public School", distance_km: 2.4, rating: 4.4 }],
@@ -465,7 +465,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Civic infrastructure lags real estate","Dust and noise from ongoing construction","Few operational schools/hospitals nearby"],
       opportunities: ["Direct airport access via DXP","Significant new commercial planning","Lower entry into branded-developer projects"],
     },
-    price_range: { buy_psf: [7840, 9418], rent_2bhk: [17629, 27743] },
+    price_range: { buy_psf: [12000, 15500], rent_2bhk: [25000, 60000] },
   },
   {
     id: 'sec-3',
@@ -476,8 +476,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.02112, 28.49442],
     polygon: SECTOR_POLYGONS['sec-3'] ?? [],
     score: 62,
-    metrics: { aqi: 164, water_tanker_reliance: 2.7, power_outage_mins: 88, noise_db: 66, waterlogging_level: 3 },
-    radar: { air_quality: 48, water_reliability: 44, power_reliability: 56, noise_peace: 28, connectivity: 62, infra_health: 60 },
+    metrics: { aqi: 110, water_tanker_reliance: 1.5, power_outage_mins: 56, noise_db: 68, waterlogging_level: 4 },
+    radar: { air_quality: 65, water_reliability: 70, power_reliability: 60, noise_peace: 50, connectivity: 40, infra_health: 60 },
     amenities: {
       hospitals: [{ name: "Sarvodaya Hospital", distance_km: 4.1, rating: 3.9 }],
       schools: [{ name: "Holy Child School", distance_km: 1.7, rating: 4.3 }],
@@ -493,7 +493,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Aging civic infrastructure","Frequent waterlogging","Encroached roads"],
       opportunities: ["Walk-to-work proximity","Mature local retail","Cheap entry"],
     },
-    price_range: { buy_psf: [6126, 10225], rent_2bhk: [12933, 19656] },
+    price_range: { buy_psf: [9000, 11000], rent_2bhk: [10000, 30000] },
   },
   {
     id: 'sec-3a',
@@ -504,8 +504,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.00922, 28.4827],
     polygon: SECTOR_POLYGONS['sec-3a'] ?? [],
     score: 53,
-    metrics: { aqi: 178, water_tanker_reliance: 3.8, power_outage_mins: 106, noise_db: 62, waterlogging_level: 3 },
-    radar: { air_quality: 41, water_reliability: 27, power_reliability: 47, noise_peace: 36, connectivity: 77, infra_health: 75 },
+    metrics: { aqi: 110, water_tanker_reliance: 1.5, power_outage_mins: 56, noise_db: 68, waterlogging_level: 4 },
+    radar: { air_quality: 65, water_reliability: 70, power_reliability: 60, noise_peace: 50, connectivity: 40, infra_health: 75 },
     amenities: {
       hospitals: [{ name: "Sunrise Hospital", distance_km: 2.8, rating: 4.3 }],
       schools: [{ name: "New Era Public School", distance_km: 0.6, rating: 4.2 }],
@@ -521,7 +521,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Aging civic infrastructure","Frequent waterlogging","Encroached roads"],
       opportunities: ["Walk-to-work proximity","Mature local retail","Cheap entry"],
     },
-    price_range: { buy_psf: [5960, 7479], rent_2bhk: [13873, 22720] },
+    price_range: { buy_psf: [9000, 11000], rent_2bhk: [10000, 30000] },
   },
   {
     id: 'sec-4',
@@ -532,8 +532,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.0115, 28.47408],
     polygon: SECTOR_POLYGONS['sec-4'] ?? [],
     score: 58,
-    metrics: { aqi: 181, water_tanker_reliance: 2.7, power_outage_mins: 102, noise_db: 78, waterlogging_level: 3 },
-    radar: { air_quality: 40, water_reliability: 44, power_reliability: 49, noise_peace: 20, connectivity: 72, infra_health: 61 },
+    metrics: { aqi: 108, water_tanker_reliance: 1.5, power_outage_mins: 56, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 66, water_reliability: 70, power_reliability: 60, noise_peace: 40, connectivity: 50, infra_health: 61 },
     amenities: {
       hospitals: [{ name: "Sarvodaya Hospital", distance_km: 3.9, rating: 4.1 }],
       schools: [{ name: "Govt Sr Sec School", distance_km: 1.1, rating: 4.1 }],
@@ -549,7 +549,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Aging civic infrastructure","Frequent waterlogging","Encroached roads"],
       opportunities: ["Walk-to-work proximity","Mature local retail","Cheap entry"],
     },
-    price_range: { buy_psf: [5372, 8788], rent_2bhk: [13493, 18841] },
+    price_range: { buy_psf: [10000, 12500], rent_2bhk: [15000, 40000] },
   },
   {
     id: 'sec-9a',
@@ -560,8 +560,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.99437, 28.46964],
     polygon: SECTOR_POLYGONS['sec-9a'] ?? [],
     score: 49,
-    metrics: { aqi: 184, water_tanker_reliance: 2.8, power_outage_mins: 75, noise_db: 78, waterlogging_level: 4 },
-    radar: { air_quality: 38, water_reliability: 39, power_reliability: 63, noise_peace: 20, connectivity: 78, infra_health: 75 },
+    metrics: { aqi: 106, water_tanker_reliance: 1.5, power_outage_mins: 68, noise_db: 68, waterlogging_level: 4 },
+    radar: { air_quality: 67, water_reliability: 70, power_reliability: 50, noise_peace: 50, connectivity: 50, infra_health: 75 },
     amenities: {
       hospitals: [{ name: "Aarvy Healthcare", distance_km: 2.1, rating: 4.3 }],
       schools: [{ name: "New Era Public School", distance_km: 3.6, rating: 4.4 }],
@@ -577,7 +577,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Aging civic infrastructure","Frequent waterlogging","Encroached roads"],
       opportunities: ["Walk-to-work proximity","Mature local retail","Cheap entry"],
     },
-    price_range: { buy_psf: [5428, 8041], rent_2bhk: [12644, 21497] },
+    price_range: { buy_psf: [9500, 12500], rent_2bhk: [13000, 35000] },
   },
   {
     id: 'sec-5',
@@ -588,8 +588,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.01775, 28.48115],
     polygon: SECTOR_POLYGONS['sec-5'] ?? [],
     score: 55,
-    metrics: { aqi: 174, water_tanker_reliance: 3.8, power_outage_mins: 110, noise_db: 62, waterlogging_level: 3 },
-    radar: { air_quality: 43, water_reliability: 27, power_reliability: 45, noise_peace: 36, connectivity: 58, infra_health: 46 },
+    metrics: { aqi: 108, water_tanker_reliance: 1.5, power_outage_mins: 56, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 66, water_reliability: 70, power_reliability: 60, noise_peace: 40, connectivity: 50, infra_health: 46 },
     amenities: {
       hospitals: [{ name: "Aarvy Healthcare", distance_km: 3.3, rating: 3.8 }],
       schools: [{ name: "Govt Sr Sec School", distance_km: 1.8, rating: 4.5 }],
@@ -605,7 +605,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Aging civic infrastructure","Frequent waterlogging","Encroached roads"],
       opportunities: ["Walk-to-work proximity","Mature local retail","Cheap entry"],
     },
-    price_range: { buy_psf: [5335, 9495], rent_2bhk: [12436, 22816] },
+    price_range: { buy_psf: [10500, 13000], rent_2bhk: [15000, 40000] },
   },
   {
     id: 'sec-6',
@@ -616,8 +616,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.02731, 28.47531],
     polygon: SECTOR_POLYGONS['sec-6'] ?? [],
     score: 61,
-    metrics: { aqi: 179, water_tanker_reliance: 2.6, power_outage_mins: 101, noise_db: 77, waterlogging_level: 5 },
-    radar: { air_quality: 41, water_reliability: 38, power_reliability: 50, noise_peace: 20, connectivity: 69, infra_health: 65 },
+    metrics: { aqi: 110, water_tanker_reliance: 1.5, power_outage_mins: 56, noise_db: 68, waterlogging_level: 4 },
+    radar: { air_quality: 65, water_reliability: 70, power_reliability: 60, noise_peace: 50, connectivity: 40, infra_health: 65 },
     amenities: {
       hospitals: [{ name: "Sunrise Hospital", distance_km: 4.5, rating: 4.1 }],
       schools: [{ name: "Holy Child School", distance_km: 2.8, rating: 4.1 }],
@@ -633,7 +633,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Aging civic infrastructure","Frequent waterlogging","Encroached roads"],
       opportunities: ["Walk-to-work proximity","Mature local retail","Cheap entry"],
     },
-    price_range: { buy_psf: [5505, 7761], rent_2bhk: [12407, 18748] },
+    price_range: { buy_psf: [9000, 11000], rent_2bhk: [10000, 30000] },
   },
   {
     id: 'sec-7',
@@ -644,8 +644,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.01661, 28.46378],
     polygon: SECTOR_POLYGONS['sec-7'] ?? [],
     score: 52,
-    metrics: { aqi: 160, water_tanker_reliance: 3.8, power_outage_mins: 75, noise_db: 68, waterlogging_level: 4 },
-    radar: { air_quality: 50, water_reliability: 23, power_reliability: 63, noise_peace: 24, connectivity: 57, infra_health: 87 },
+    metrics: { aqi: 112, water_tanker_reliance: 1.5, power_outage_mins: 56, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 63, water_reliability: 70, power_reliability: 60, noise_peace: 40, connectivity: 40, infra_health: 87 },
     amenities: {
       hospitals: [{ name: "Aarvy Healthcare", distance_km: 1.6, rating: 4.5 }],
       schools: [{ name: "Govt Sr Sec School", distance_km: 0.5, rating: 4.4 }],
@@ -661,7 +661,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Aging civic infrastructure","Frequent waterlogging","Encroached roads"],
       opportunities: ["Walk-to-work proximity","Mature local retail","Cheap entry"],
     },
-    price_range: { buy_psf: [5309, 7750], rent_2bhk: [12094, 20635] },
+    price_range: { buy_psf: [9000, 12000], rent_2bhk: [12000, 32000] },
   },
   {
     id: 'sec-10',
@@ -672,8 +672,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.0009, 28.4537],
     polygon: SECTOR_POLYGONS['sec-10'] ?? [],
     score: 60,
-    metrics: { aqi: 172, water_tanker_reliance: 3.8, power_outage_mins: 82, noise_db: 71, waterlogging_level: 4 },
-    radar: { air_quality: 44, water_reliability: 22, power_reliability: 60, noise_peace: 24, connectivity: 48, infra_health: 74 },
+    metrics: { aqi: 106, water_tanker_reliance: 1.5, power_outage_mins: 68, noise_db: 68, waterlogging_level: 4 },
+    radar: { air_quality: 67, water_reliability: 70, power_reliability: 50, noise_peace: 50, connectivity: 50, infra_health: 74 },
     amenities: {
       hospitals: [{ name: "Sarvodaya Hospital", distance_km: 1.1, rating: 4.0 }],
       schools: [{ name: "New Era Public School", distance_km: 2.8, rating: 4.3 }],
@@ -689,7 +689,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Aging civic infrastructure","Waterlogging during monsoon","Encroached internal roads"],
       opportunities: ["Walk-to-work proximity","Mature local retail","Affordable entry point"],
     },
-    price_range: { buy_psf: [5200, 7100], rent_2bhk: [12500, 18500] },
+    price_range: { buy_psf: [9500, 12500], rent_2bhk: [13000, 35000] },
   },
   {
     id: 'sec-10a',
@@ -700,8 +700,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.0058, 28.44499],
     polygon: SECTOR_POLYGONS['sec-10a'] ?? [],
     score: 62,
-    metrics: { aqi: 169, water_tanker_reliance: 3.5, power_outage_mins: 77, noise_db: 73, waterlogging_level: 5 },
-    radar: { air_quality: 46, water_reliability: 24, power_reliability: 62, noise_peace: 20, connectivity: 50, infra_health: 78 },
+    metrics: { aqi: 106, water_tanker_reliance: 1.5, power_outage_mins: 68, noise_db: 68, waterlogging_level: 4 },
+    radar: { air_quality: 67, water_reliability: 70, power_reliability: 50, noise_peace: 50, connectivity: 50, infra_health: 78 },
     amenities: {
       hospitals: [{ name: "Sarvodaya Hospital", distance_km: 0.8, rating: 4.0 }],
       schools: [{ name: "New Era Public School", distance_km: 3.0, rating: 4.3 }],
@@ -717,7 +717,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Aging civic infrastructure","Frequent waterlogging","Encroached roads"],
       opportunities: ["Walk-to-work proximity","Mature local retail","Cheap entry"],
     },
-    price_range: { buy_psf: [5440, 7383], rent_2bhk: [12884, 19245] },
+    price_range: { buy_psf: [9500, 12500], rent_2bhk: [13000, 35000] },
   },
   {
     id: 'sec-11',
@@ -728,8 +728,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.02429, 28.45005],
     polygon: SECTOR_POLYGONS['sec-11'] ?? [],
     score: 47,
-    metrics: { aqi: 166, water_tanker_reliance: 2.7, power_outage_mins: 109, noise_db: 72, waterlogging_level: 3 },
-    radar: { air_quality: 47, water_reliability: 44, power_reliability: 46, noise_peace: 20, connectivity: 80, infra_health: 46 },
+    metrics: { aqi: 108, water_tanker_reliance: 1.5, power_outage_mins: 68, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 66, water_reliability: 70, power_reliability: 50, noise_peace: 40, connectivity: 50, infra_health: 46 },
     amenities: {
       hospitals: [{ name: "Civil Hospital Gurgaon", distance_km: 0.9, rating: 4.1 }],
       schools: [{ name: "Govt Sr Sec School", distance_km: 1.3, rating: 4.0 }],
@@ -745,7 +745,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Aging civic infrastructure","Frequent waterlogging","Encroached roads"],
       opportunities: ["Walk-to-work proximity","Mature local retail","Cheap entry"],
     },
-    price_range: { buy_psf: [6334, 8276], rent_2bhk: [12938, 24503] },
+    price_range: { buy_psf: [9500, 12000], rent_2bhk: [12000, 30000] },
   },
   {
     id: 'sec-33',
@@ -756,8 +756,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.02685, 28.4357],
     polygon: SECTOR_POLYGONS['sec-33'] ?? [],
     score: 61,
-    metrics: { aqi: 155, water_tanker_reliance: 3.3, power_outage_mins: 60, noise_db: 67, waterlogging_level: 2 },
-    radar: { air_quality: 53, water_reliability: 39, power_reliability: 70, noise_peace: 26, connectivity: 89, infra_health: 81 },
+    metrics: { aqi: 100, water_tanker_reliance: 1.5, power_outage_mins: 68, noise_db: 68, waterlogging_level: 4 },
+    radar: { air_quality: 70, water_reliability: 60, power_reliability: 50, noise_peace: 50, connectivity: 60, infra_health: 81 },
     amenities: {
       hospitals: [{ name: "Cygnus Hospital", distance_km: 1.8, rating: 3.9 }],
       schools: [{ name: "Lotus Valley", distance_km: 3.3, rating: 4.4 }],
@@ -773,7 +773,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Limited room for new amenities","Older plot/builder-floor stock"],
       opportunities: ["Established neighborhood feel","Stable resale market","Proximity to commercial spine"],
     },
-    price_range: { buy_psf: [10278, 13945], rent_2bhk: [20202, 28834] },
+    price_range: { buy_psf: [10000, 13500], rent_2bhk: [20000, 35000] },
   },
   {
     id: 'sec-15-i',
@@ -784,8 +784,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.03585, 28.45064],
     polygon: SECTOR_POLYGONS['sec-15-i'] ?? [],
     score: 64,
-    metrics: { aqi: 162, water_tanker_reliance: 2.8, power_outage_mins: 57, noise_db: 70, waterlogging_level: 4 },
-    radar: { air_quality: 49, water_reliability: 39, power_reliability: 72, noise_peace: 20, connectivity: 78, infra_health: 52 },
+    metrics: { aqi: 100, water_tanker_reliance: 2.5, power_outage_mins: 68, noise_db: 72, waterlogging_level: 5 },
+    radar: { air_quality: 70, water_reliability: 60, power_reliability: 50, noise_peace: 40, connectivity: 60, infra_health: 52 },
     amenities: {
       hospitals: [{ name: "Cygnus Hospital", distance_km: 1.3, rating: 3.9 }],
       schools: [{ name: "Suncity School", distance_km: 2.7, rating: 4.0 }],
@@ -801,7 +801,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Limited room for new amenities","Older plot/builder-floor stock"],
       opportunities: ["Established neighborhood feel","Stable resale market","Proximity to commercial spine"],
     },
-    price_range: { buy_psf: [10127, 14520], rent_2bhk: [29299, 39149] },
+    price_range: { buy_psf: [15000, 25000], rent_2bhk: [10000, 80000] },
   },
   {
     id: 'sec-15-ii',
@@ -812,8 +812,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.04636, 28.46124],
     polygon: SECTOR_POLYGONS['sec-15-ii'] ?? [],
     score: 63,
-    metrics: { aqi: 166, water_tanker_reliance: 2.2, power_outage_mins: 53, noise_db: 63, waterlogging_level: 2 },
-    radar: { air_quality: 47, water_reliability: 56, power_reliability: 74, noise_peace: 34, connectivity: 75, infra_health: 70 },
+    metrics: { aqi: 100, water_tanker_reliance: 2.5, power_outage_mins: 68, noise_db: 72, waterlogging_level: 5 },
+    radar: { air_quality: 70, water_reliability: 60, power_reliability: 50, noise_peace: 40, connectivity: 60, infra_health: 70 },
     amenities: {
       hospitals: [{ name: "Columbia Asia Hospital", distance_km: 1.3, rating: 4.3 }],
       schools: [{ name: "Suncity School", distance_km: 1.2, rating: 4.0 }],
@@ -829,7 +829,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Limited room for new amenities","Older plot/builder-floor stock"],
       opportunities: ["Established neighborhood feel","Stable resale market","Proximity to commercial spine"],
     },
-    price_range: { buy_psf: [8798, 13009], rent_2bhk: [20438, 31070] },
+    price_range: { buy_psf: [15000, 25000], rent_2bhk: [10000, 80000] },
   },
   {
     id: 'sec-16',
@@ -840,8 +840,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.05194, 28.46875],
     polygon: SECTOR_POLYGONS['sec-16'] ?? [],
     score: 74,
-    metrics: { aqi: 148, water_tanker_reliance: 3.1, power_outage_mins: 40, noise_db: 56, waterlogging_level: 4 },
-    radar: { air_quality: 56, water_reliability: 34, power_reliability: 80, noise_peace: 48, connectivity: 65, infra_health: 56 },
+    metrics: { aqi: 102, water_tanker_reliance: 1.5, power_outage_mins: 56, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 69, water_reliability: 70, power_reliability: 60, noise_peace: 40, connectivity: 60, infra_health: 56 },
     amenities: {
       hospitals: [{ name: "Cygnus Hospital", distance_km: 1.6, rating: 4.2 }],
       schools: [{ name: "Ryan International", distance_km: 1.9, rating: 4.2 }],
@@ -857,7 +857,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Limited room for new amenities","Older plot/builder-floor stock"],
       opportunities: ["Established neighborhood feel","Stable resale market","Proximity to commercial spine"],
     },
-    price_range: { buy_psf: [8013, 10286], rent_2bhk: [23107, 28297] },
+    price_range: { buy_psf: [11000, 15000], rent_2bhk: [15000, 35000] },
   },
   {
     id: 'sec-12a',
@@ -868,8 +868,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.03109, 28.46799],
     polygon: SECTOR_POLYGONS['sec-12a'] ?? [],
     score: 51,
-    metrics: { aqi: 162, water_tanker_reliance: 3.9, power_outage_mins: 82, noise_db: 69, waterlogging_level: 5 },
-    radar: { air_quality: 49, water_reliability: 17, power_reliability: 59, noise_peace: 22, connectivity: 64, infra_health: 73 },
+    metrics: { aqi: 110, water_tanker_reliance: 1.5, power_outage_mins: 68, noise_db: 72, waterlogging_level: 5 },
+    radar: { air_quality: 65, water_reliability: 70, power_reliability: 50, noise_peace: 40, connectivity: 50, infra_health: 73 },
     amenities: {
       hospitals: [{ name: "Aarvy Healthcare", distance_km: 3.4, rating: 4.1 }],
       schools: [{ name: "New Era Public School", distance_km: 1.3, rating: 4.2 }],
@@ -885,7 +885,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Aging civic infrastructure","Frequent waterlogging","Encroached roads"],
       opportunities: ["Walk-to-work proximity","Mature local retail","Cheap entry"],
     },
-    price_range: { buy_psf: [6478, 9145], rent_2bhk: [13733, 20444] },
+    price_range: { buy_psf: [10000, 14500], rent_2bhk: [9000, 30000] },
   },
   {
     id: 'sec-13',
@@ -896,8 +896,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.03814, 28.47748],
     polygon: SECTOR_POLYGONS['sec-13'] ?? [],
     score: 60,
-    metrics: { aqi: 170, water_tanker_reliance: 2.7, power_outage_mins: 97, noise_db: 62, waterlogging_level: 3 },
-    radar: { air_quality: 45, water_reliability: 44, power_reliability: 52, noise_peace: 36, connectivity: 81, infra_health: 66 },
+    metrics: { aqi: 112, water_tanker_reliance: 1.5, power_outage_mins: 68, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 63, water_reliability: 70, power_reliability: 50, noise_peace: 40, connectivity: 50, infra_health: 66 },
     amenities: {
       hospitals: [{ name: "Sarvodaya Hospital", distance_km: 2.8, rating: 4.3 }],
       schools: [{ name: "Govt Sr Sec School", distance_km: 2.2, rating: 4.2 }],
@@ -913,7 +913,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Aging civic infrastructure","Frequent waterlogging","Encroached roads"],
       opportunities: ["Walk-to-work proximity","Mature local retail","Cheap entry"],
     },
-    price_range: { buy_psf: [5497, 9496], rent_2bhk: [13699, 21200] },
+    price_range: { buy_psf: [9500, 12500], rent_2bhk: [12000, 32000] },
   },
   {
     id: 'sec-8',
@@ -924,8 +924,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.0134, 28.45482],
     polygon: SECTOR_POLYGONS['sec-8'] ?? [],
     score: 52,
-    metrics: { aqi: 169, water_tanker_reliance: 3.6, power_outage_mins: 67, noise_db: 67, waterlogging_level: 5 },
-    radar: { air_quality: 46, water_reliability: 22, power_reliability: 67, noise_peace: 26, connectivity: 76, infra_health: 85 },
+    metrics: { aqi: 112, water_tanker_reliance: 1.5, power_outage_mins: 56, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 63, water_reliability: 70, power_reliability: 60, noise_peace: 40, connectivity: 40, infra_health: 85 },
     amenities: {
       hospitals: [{ name: "Sarvodaya Hospital", distance_km: 2.7, rating: 4.2 }],
       schools: [{ name: "Govt Sr Sec School", distance_km: 3.4, rating: 4.4 }],
@@ -941,7 +941,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Aging civic infrastructure","Frequent waterlogging","Encroached roads"],
       opportunities: ["Walk-to-work proximity","Mature local retail","Cheap entry"],
     },
-    price_range: { buy_psf: [6231, 8389], rent_2bhk: [12980, 18484] },
+    price_range: { buy_psf: [9000, 12000], rent_2bhk: [12000, 32000] },
   },
   {
     id: 'sec-12',
@@ -952,8 +952,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.02493, 28.46564],
     polygon: SECTOR_POLYGONS['sec-12'] ?? [],
     score: 59,
-    metrics: { aqi: 177, water_tanker_reliance: 2.6, power_outage_mins: 96, noise_db: 66, waterlogging_level: 4 },
-    radar: { air_quality: 42, water_reliability: 42, power_reliability: 52, noise_peace: 28, connectivity: 82, infra_health: 57 },
+    metrics: { aqi: 110, water_tanker_reliance: 1.5, power_outage_mins: 68, noise_db: 72, waterlogging_level: 5 },
+    radar: { air_quality: 65, water_reliability: 70, power_reliability: 50, noise_peace: 40, connectivity: 50, infra_health: 57 },
     amenities: {
       hospitals: [{ name: "Sarvodaya Hospital", distance_km: 3.0, rating: 4.4 }],
       schools: [{ name: "Holy Child School", distance_km: 2.2, rating: 4.1 }],
@@ -969,7 +969,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Aging civic infrastructure","Frequent waterlogging","Encroached roads"],
       opportunities: ["Walk-to-work proximity","Mature local retail","Cheap entry"],
     },
-    price_range: { buy_psf: [5883, 8049], rent_2bhk: [12792, 23606] },
+    price_range: { buy_psf: [10000, 14500], rent_2bhk: [9000, 30000] },
   },
   {
     id: 'sec-100',
@@ -980,8 +980,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.97162, 28.46074],
     polygon: SECTOR_POLYGONS['sec-100'] ?? [],
     score: 64,
-    metrics: { aqi: 178, water_tanker_reliance: 4.2, power_outage_mins: 99, noise_db: 60, waterlogging_level: 4 },
-    radar: { air_quality: 41, water_reliability: 16, power_reliability: 51, noise_peace: 40, connectivity: 61, infra_health: 62 },
+    metrics: { aqi: 105, water_tanker_reliance: 4.5, power_outage_mins: 80, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 67, water_reliability: 40, power_reliability: 40, noise_peace: 40, connectivity: 50, infra_health: 62 },
     amenities: {
       hospitals: [{ name: "Sarvodaya Hospital", distance_km: 1.5, rating: 4.0 }],
       schools: [{ name: "New Era Public School", distance_km: 3.2, rating: 4.0 }],
@@ -998,7 +998,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Civic infrastructure lags real estate","Dust and noise from ongoing construction","Few operational schools/hospitals nearby"],
       opportunities: ["Direct airport access via DXP","Significant new commercial planning","Lower entry into branded-developer projects"],
     },
-    price_range: { buy_psf: [8163, 11277], rent_2bhk: [18548, 26010] },
+    price_range: { buy_psf: [11000, 14000], rent_2bhk: [22000, 50000] },
   },
   {
     id: 'sec-18',
@@ -1009,8 +1009,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.06991, 28.49517],
     polygon: SECTOR_POLYGONS['sec-18'] ?? [],
     score: 72,
-    metrics: { aqi: 151, water_tanker_reliance: 2.8, power_outage_mins: 64, noise_db: 68, waterlogging_level: 4 },
-    radar: { air_quality: 55, water_reliability: 39, power_reliability: 68, noise_peace: 24, connectivity: 51, infra_health: 56 },
+    metrics: { aqi: 105, water_tanker_reliance: 1.5, power_outage_mins: 68, noise_db: 75, waterlogging_level: 4 },
+    radar: { air_quality: 67, water_reliability: 70, power_reliability: 50, noise_peace: 30, connectivity: 70, infra_health: 56 },
     amenities: {
       hospitals: [{ name: "W Pratiksha Hospital", distance_km: 2.6, rating: 4.3 }],
       schools: [{ name: "Ryan International", distance_km: 1.8, rating: 4.0 }],
@@ -1026,7 +1026,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Limited room for new amenities","Older plot/builder-floor stock"],
       opportunities: ["Established neighborhood feel","Stable resale market","Proximity to commercial spine"],
     },
-    price_range: { buy_psf: [8569, 11746], rent_2bhk: [28292, 33157] },
+    price_range: { buy_psf: [11500, 15500], rent_2bhk: [18000, 40000] },
   },
   {
     id: 'sec-30',
@@ -1037,8 +1037,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.05685, 28.46304],
     polygon: SECTOR_POLYGONS['sec-30'] ?? [],
     score: 73,
-    metrics: { aqi: 162, water_tanker_reliance: 2.8, power_outage_mins: 74, noise_db: 59, waterlogging_level: 2 },
-    radar: { air_quality: 49, water_reliability: 47, power_reliability: 63, noise_peace: 42, connectivity: 51, infra_health: 86 },
+    metrics: { aqi: 92, water_tanker_reliance: 3.5, power_outage_mins: 68, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 74, water_reliability: 50, power_reliability: 50, noise_peace: 40, connectivity: 80, infra_health: 86 },
     amenities: {
       hospitals: [{ name: "Cygnus Hospital", distance_km: 0.9, rating: 4.1 }],
       schools: [{ name: "Amity International School", distance_km: 1.4, rating: 4.3 }],
@@ -1054,7 +1054,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Limited room for new amenities","Older plot/builder-floor stock"],
       opportunities: ["Established neighborhood feel","Stable resale market","Proximity to commercial spine"],
     },
-    price_range: { buy_psf: [9290, 13552], rent_2bhk: [29237, 37359] },
+    price_range: { buy_psf: [13000, 18000], rent_2bhk: [22000, 45000] },
   },
   {
     id: 'sec-41',
@@ -1065,8 +1065,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.06322, 28.45691],
     polygon: SECTOR_POLYGONS['sec-41'] ?? [],
     score: 66,
-    metrics: { aqi: 157, water_tanker_reliance: 2.4, power_outage_mins: 72, noise_db: 65, waterlogging_level: 3 },
-    radar: { air_quality: 52, water_reliability: 49, power_reliability: 64, noise_peace: 30, connectivity: 87, infra_health: 54 },
+    metrics: { aqi: 95, water_tanker_reliance: 3.5, power_outage_mins: 68, noise_db: 68, waterlogging_level: 5 },
+    radar: { air_quality: 73, water_reliability: 50, power_reliability: 50, noise_peace: 50, connectivity: 70, infra_health: 54 },
     amenities: {
       hospitals: [{ name: "Columbia Asia Hospital", distance_km: 1.3, rating: 4.6 }],
       schools: [{ name: "Lotus Valley", distance_km: 3.0, rating: 4.6 }],
@@ -1082,7 +1082,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Limited room for new amenities","Older plot/builder-floor stock"],
       opportunities: ["Established neighborhood feel","Stable resale market","Proximity to commercial spine"],
     },
-    price_range: { buy_psf: [10739, 13811], rent_2bhk: [22406, 33332] },
+    price_range: { buy_psf: [10400, 13900], rent_2bhk: [20000, 35000] },
   },
   {
     id: 'sec-31',
@@ -1093,8 +1093,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.05174, 28.45463],
     polygon: SECTOR_POLYGONS['sec-31'] ?? [],
     score: 73,
-    metrics: { aqi: 154, water_tanker_reliance: 2.7, power_outage_mins: 53, noise_db: 60, waterlogging_level: 3 },
-    radar: { air_quality: 53, water_reliability: 44, power_reliability: 74, noise_peace: 40, connectivity: 61, infra_health: 58 },
+    metrics: { aqi: 95, water_tanker_reliance: 3.5, power_outage_mins: 68, noise_db: 72, waterlogging_level: 5 },
+    radar: { air_quality: 73, water_reliability: 50, power_reliability: 50, noise_peace: 40, connectivity: 70, infra_health: 58 },
     amenities: {
       hospitals: [{ name: "Manipal Hospital", distance_km: 3.1, rating: 4.3 }],
       schools: [{ name: "Suncity School", distance_km: 0.9, rating: 4.5 }],
@@ -1110,7 +1110,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Limited room for new amenities","Older plot/builder-floor stock"],
       opportunities: ["Established neighborhood feel","Stable resale market","Proximity to commercial spine"],
     },
-    price_range: { buy_psf: [8553, 10351], rent_2bhk: [20317, 25330] },
+    price_range: { buy_psf: [10400, 13900], rent_2bhk: [20000, 35000] },
   },
   {
     id: 'sec-40',
@@ -1121,8 +1121,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.05641, 28.44976],
     polygon: SECTOR_POLYGONS['sec-40'] ?? [],
     score: 70,
-    metrics: { aqi: 168, water_tanker_reliance: 3.2, power_outage_mins: 64, noise_db: 65, waterlogging_level: 4 },
-    radar: { air_quality: 46, water_reliability: 32, power_reliability: 68, noise_peace: 30, connectivity: 87, infra_health: 49 },
+    metrics: { aqi: 95, water_tanker_reliance: 3.5, power_outage_mins: 68, noise_db: 68, waterlogging_level: 5 },
+    radar: { air_quality: 73, water_reliability: 50, power_reliability: 50, noise_peace: 50, connectivity: 70, infra_health: 49 },
     amenities: {
       hospitals: [{ name: "Manipal Hospital", distance_km: 4.3, rating: 4.5 }],
       schools: [{ name: "DPS Sector 45", distance_km: 1.8, rating: 3.9 }],
@@ -1138,7 +1138,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Limited room for new amenities","Older plot/builder-floor stock"],
       opportunities: ["Established neighborhood feel","Stable resale market","Proximity to commercial spine"],
     },
-    price_range: { buy_psf: [10615, 12405], rent_2bhk: [22590, 29349] },
+    price_range: { buy_psf: [10400, 13900], rent_2bhk: [20000, 35000] },
   },
   {
     id: 'sec-32',
@@ -1149,8 +1149,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.04085, 28.44648],
     polygon: SECTOR_POLYGONS['sec-32'] ?? [],
     score: 71,
-    metrics: { aqi: 161, water_tanker_reliance: 3.0, power_outage_mins: 73, noise_db: 57, waterlogging_level: 2 },
-    radar: { air_quality: 50, water_reliability: 44, power_reliability: 64, noise_peace: 46, connectivity: 81, infra_health: 86 },
+    metrics: { aqi: 95, water_tanker_reliance: 3.5, power_outage_mins: 68, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 73, water_reliability: 50, power_reliability: 50, noise_peace: 40, connectivity: 70, infra_health: 86 },
     amenities: {
       hospitals: [{ name: "W Pratiksha Hospital", distance_km: 3.5, rating: 4.4 }],
       schools: [{ name: "DPS Sector 45", distance_km: 3.1, rating: 4.0 }],
@@ -1166,7 +1166,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Limited room for new amenities","Older plot/builder-floor stock"],
       opportunities: ["Established neighborhood feel","Stable resale market","Proximity to commercial spine"],
     },
-    price_range: { buy_psf: [10510, 13698], rent_2bhk: [26524, 30833] },
+    price_range: { buy_psf: [10400, 13900], rent_2bhk: [20000, 35000] },
   },
   {
     id: 'sec-39',
@@ -1177,8 +1177,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.05023, 28.4419],
     polygon: SECTOR_POLYGONS['sec-39'] ?? [],
     score: 69,
-    metrics: { aqi: 150, water_tanker_reliance: 3.2, power_outage_mins: 56, noise_db: 70, waterlogging_level: 2 },
-    radar: { air_quality: 55, water_reliability: 40, power_reliability: 72, noise_peace: 20, connectivity: 81, infra_health: 57 },
+    metrics: { aqi: 95, water_tanker_reliance: 3.5, power_outage_mins: 68, noise_db: 68, waterlogging_level: 5 },
+    radar: { air_quality: 73, water_reliability: 50, power_reliability: 50, noise_peace: 50, connectivity: 70, infra_health: 57 },
     amenities: {
       hospitals: [{ name: "Park Hospital", distance_km: 1.3, rating: 4.6 }],
       schools: [{ name: "DPS Sector 45", distance_km: 2.3, rating: 4.0 }],
@@ -1194,7 +1194,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Limited room for new amenities","Older plot/builder-floor stock"],
       opportunities: ["Established neighborhood feel","Stable resale market","Proximity to commercial spine"],
     },
-    price_range: { buy_psf: [8419, 10465], rent_2bhk: [20288, 28521] },
+    price_range: { buy_psf: [10400, 13900], rent_2bhk: [20000, 35000] },
   },
   {
     id: 'sec-38',
@@ -1205,8 +1205,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.03933, 28.43655],
     polygon: SECTOR_POLYGONS['sec-38'] ?? [],
     score: 66,
-    metrics: { aqi: 162, water_tanker_reliance: 2.1, power_outage_mins: 47, noise_db: 69, waterlogging_level: 2 },
-    radar: { air_quality: 49, water_reliability: 58, power_reliability: 77, noise_peace: 22, connectivity: 58, infra_health: 58 },
+    metrics: { aqi: 95, water_tanker_reliance: 3.5, power_outage_mins: 68, noise_db: 68, waterlogging_level: 5 },
+    radar: { air_quality: 73, water_reliability: 50, power_reliability: 50, noise_peace: 50, connectivity: 70, infra_health: 58 },
     amenities: {
       hospitals: [{ name: "Manipal Hospital", distance_km: 0.8, rating: 4.4 }],
       schools: [{ name: "Amity International School", distance_km: 0.9, rating: 4.2 }],
@@ -1222,7 +1222,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Limited room for new amenities","Older plot/builder-floor stock"],
       opportunities: ["Established neighborhood feel","Stable resale market","Proximity to commercial spine"],
     },
-    price_range: { buy_psf: [9643, 12563], rent_2bhk: [20861, 30049] },
+    price_range: { buy_psf: [10400, 13900], rent_2bhk: [20000, 35000] },
   },
   {
     id: 'sec-46',
@@ -1233,8 +1233,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.05868, 28.43527],
     polygon: SECTOR_POLYGONS['sec-46'] ?? [],
     score: 74,
-    metrics: { aqi: 175, water_tanker_reliance: 2.0, power_outage_mins: 54, noise_db: 61, waterlogging_level: 2 },
-    radar: { air_quality: 43, water_reliability: 60, power_reliability: 73, noise_peace: 38, connectivity: 89, infra_health: 78 },
+    metrics: { aqi: 95, water_tanker_reliance: 2.5, power_outage_mins: 68, noise_db: 72, waterlogging_level: 5 },
+    radar: { air_quality: 73, water_reliability: 60, power_reliability: 50, noise_peace: 40, connectivity: 70, infra_health: 78 },
     amenities: {
       hospitals: [{ name: "Columbia Asia Hospital", distance_km: 4.4, rating: 3.9 }],
       schools: [{ name: "Ryan International", distance_km: 3.7, rating: 4.5 }],
@@ -1250,7 +1250,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Limited room for new amenities","Older plot/builder-floor stock"],
       opportunities: ["Established neighborhood feel","Stable resale market","Proximity to commercial spine"],
     },
-    price_range: { buy_psf: [10968, 14552], rent_2bhk: [20435, 24900] },
+    price_range: { buy_psf: [11000, 15000], rent_2bhk: [27000, 85000] },
   },
   {
     id: 'sec-51',
@@ -1261,8 +1261,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.06577, 28.43059],
     polygon: SECTOR_POLYGONS['sec-51'] ?? [],
     score: 64,
-    metrics: { aqi: 163, water_tanker_reliance: 3.0, power_outage_mins: 74, noise_db: 69, waterlogging_level: 4 },
-    radar: { air_quality: 49, water_reliability: 36, power_reliability: 63, noise_peace: 22, connectivity: 58, infra_health: 55 },
+    metrics: { aqi: 95, water_tanker_reliance: 3.5, power_outage_mins: 68, noise_db: 68, waterlogging_level: 5 },
+    radar: { air_quality: 73, water_reliability: 50, power_reliability: 50, noise_peace: 50, connectivity: 70, infra_health: 55 },
     amenities: {
       hospitals: [{ name: "Park Hospital", distance_km: 0.8, rating: 4.4 }],
       schools: [{ name: "Amity International School", distance_km: 2.5, rating: 4.5 }],
@@ -1279,7 +1279,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Severe peak-hour congestion","Construction dust through 2027","Patchy infrastructure"],
       opportunities: ["Elevated road completion","Sohna Elevated Corridor","New mall openings"],
     },
-    price_range: { buy_psf: [8003, 12141], rent_2bhk: [20080, 27295] },
+    price_range: { buy_psf: [10500, 14900], rent_2bhk: [22000, 70000] },
   },
   {
     id: 'sec-52',
@@ -1290,8 +1290,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.08116, 28.43922],
     polygon: SECTOR_POLYGONS['sec-52'] ?? [],
     score: 68,
-    metrics: { aqi: 158, water_tanker_reliance: 3.6, power_outage_mins: 98, noise_db: 61, waterlogging_level: 2 },
-    radar: { air_quality: 51, water_reliability: 34, power_reliability: 51, noise_peace: 38, connectivity: 66, infra_health: 68 },
+    metrics: { aqi: 95, water_tanker_reliance: 3.5, power_outage_mins: 68, noise_db: 68, waterlogging_level: 5 },
+    radar: { air_quality: 73, water_reliability: 50, power_reliability: 50, noise_peace: 50, connectivity: 70, infra_health: 68 },
     amenities: {
       hospitals: [{ name: "Park Hospital", distance_km: 1.0, rating: 4.4 }],
       schools: [{ name: "Ryan International", distance_km: 3.2, rating: 4.6 }],
@@ -1308,7 +1308,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Severe peak-hour congestion","Construction dust through 2027","Patchy infrastructure"],
       opportunities: ["Elevated road completion","Sohna Elevated Corridor","New mall openings"],
     },
-    price_range: { buy_psf: [7046, 9374], rent_2bhk: [20774, 31508] },
+    price_range: { buy_psf: [10500, 14900], rent_2bhk: [16000, 90000] },
   },
   {
     id: 'sec-82',
@@ -1319,8 +1319,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.95931, 28.3931],
     polygon: SECTOR_POLYGONS['sec-82'] ?? [],
     score: 51,
-    metrics: { aqi: 155, water_tanker_reliance: 4.4, power_outage_mins: 93, noise_db: 52, waterlogging_level: 5 },
-    radar: { air_quality: 53, water_reliability: 15, power_reliability: 54, noise_peace: 56, connectivity: 89, infra_health: 83 },
+    metrics: { aqi: 105, water_tanker_reliance: 4.5, power_outage_mins: 80, noise_db: 68, waterlogging_level: 4 },
+    radar: { air_quality: 67, water_reliability: 40, power_reliability: 40, noise_peace: 50, connectivity: 40, infra_health: 83 },
     amenities: {
       hospitals: [{ name: "Sarvodaya Hospital", distance_km: 1.3, rating: 4.3 }],
       schools: [{ name: "New Era Public School", distance_km: 2.1, rating: 4.5 }],
@@ -1337,7 +1337,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Water tanker dependence remains a daily reality","Limited commercial/retail amenities","Metro 5+ years out"],
       opportunities: ["Dwarka Expressway access","New schools and hospitals opening","Lower entry price"],
     },
-    price_range: { buy_psf: [6239, 8009], rent_2bhk: [14251, 23047] },
+    price_range: { buy_psf: [9000, 13000], rent_2bhk: [15000, 30000] },
   },
   {
     id: 'sec-82a',
@@ -1348,8 +1348,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.96581, 28.3869],
     polygon: SECTOR_POLYGONS['sec-82a'] ?? [],
     score: 61,
-    metrics: { aqi: 185, water_tanker_reliance: 4.0, power_outage_mins: 104, noise_db: 59, waterlogging_level: 3 },
-    radar: { air_quality: 38, water_reliability: 24, power_reliability: 48, noise_peace: 42, connectivity: 62, infra_health: 67 },
+    metrics: { aqi: 105, water_tanker_reliance: 4.5, power_outage_mins: 80, noise_db: 68, waterlogging_level: 4 },
+    radar: { air_quality: 67, water_reliability: 40, power_reliability: 40, noise_peace: 50, connectivity: 40, infra_health: 67 },
     amenities: {
       hospitals: [{ name: "Sarvodaya Hospital", distance_km: 2.4, rating: 4.7 }],
       schools: [{ name: "Govt Sr Sec School", distance_km: 1.6, rating: 4.2 }],
@@ -1366,7 +1366,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Water tanker dependence remains a daily reality","Limited commercial/retail amenities","Metro 5+ years out"],
       opportunities: ["Dwarka Expressway access","New schools and hospitals opening","Lower entry price"],
     },
-    price_range: { buy_psf: [6832, 9098], rent_2bhk: [15536, 25022] },
+    price_range: { buy_psf: [9000, 13000], rent_2bhk: [15000, 30000] },
   },
   {
     id: 'sec-84',
@@ -1377,8 +1377,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.96144, 28.40716],
     polygon: SECTOR_POLYGONS['sec-84'] ?? [],
     score: 51,
-    metrics: { aqi: 155, water_tanker_reliance: 4.9, power_outage_mins: 85, noise_db: 53, waterlogging_level: 4 },
-    radar: { air_quality: 53, water_reliability: 15, power_reliability: 58, noise_peace: 54, connectivity: 59, infra_health: 78 },
+    metrics: { aqi: 108, water_tanker_reliance: 4.5, power_outage_mins: 80, noise_db: 68, waterlogging_level: 4 },
+    radar: { air_quality: 66, water_reliability: 40, power_reliability: 40, noise_peace: 50, connectivity: 40, infra_health: 78 },
     amenities: {
       hospitals: [{ name: "Sunrise Hospital", distance_km: 0.7, rating: 4.5 }],
       schools: [{ name: "Holy Child School", distance_km: 2.0, rating: 4.2 }],
@@ -1395,7 +1395,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Water tanker dependence remains a daily reality","Limited commercial/retail amenities","Metro 5+ years out"],
       opportunities: ["Dwarka Expressway access","New schools and hospitals opening","Lower entry price"],
     },
-    price_range: { buy_psf: [6624, 8802], rent_2bhk: [14495, 26046] },
+    price_range: { buy_psf: [8000, 12000], rent_2bhk: [5000, 38000] },
   },
   {
     id: 'sec-85',
@@ -1406,8 +1406,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.95381, 28.40642],
     polygon: SECTOR_POLYGONS['sec-85'] ?? [],
     score: 67,
-    metrics: { aqi: 182, water_tanker_reliance: 5.0, power_outage_mins: 100, noise_db: 46, waterlogging_level: 3 },
-    radar: { air_quality: 39, water_reliability: 15, power_reliability: 50, noise_peace: 68, connectivity: 83, infra_health: 49 },
+    metrics: { aqi: 108, water_tanker_reliance: 4.5, power_outage_mins: 80, noise_db: 68, waterlogging_level: 4 },
+    radar: { air_quality: 66, water_reliability: 40, power_reliability: 40, noise_peace: 50, connectivity: 40, infra_health: 49 },
     amenities: {
       hospitals: [{ name: "Sunrise Hospital", distance_km: 2.4, rating: 4.5 }],
       schools: [{ name: "Holy Child School", distance_km: 3.1, rating: 4.0 }],
@@ -1424,7 +1424,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Water tanker dependence remains a daily reality","Limited commercial/retail amenities","Metro 5+ years out"],
       opportunities: ["Dwarka Expressway access","New schools and hospitals opening","Lower entry price"],
     },
-    price_range: { buy_psf: [5859, 9743], rent_2bhk: [15843, 23927] },
+    price_range: { buy_psf: [8000, 12000], rent_2bhk: [14000, 38000] },
   },
   {
     id: 'sec-88',
@@ -1435,8 +1435,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.95645, 28.42319],
     polygon: SECTOR_POLYGONS['sec-88'] ?? [],
     score: 54,
-    metrics: { aqi: 158, water_tanker_reliance: 4.7, power_outage_mins: 80, noise_db: 54, waterlogging_level: 4 },
-    radar: { air_quality: 51, water_reliability: 15, power_reliability: 60, noise_peace: 52, connectivity: 80, infra_health: 80 },
+    metrics: { aqi: 110, water_tanker_reliance: 4.5, power_outage_mins: 80, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 65, water_reliability: 40, power_reliability: 40, noise_peace: 40, connectivity: 40, infra_health: 80 },
     amenities: {
       hospitals: [{ name: "Civil Hospital Gurgaon", distance_km: 4.1, rating: 4.4 }],
       schools: [{ name: "New Era Public School", distance_km: 2.6, rating: 4.2 }],
@@ -1453,7 +1453,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Water tanker dependence remains a daily reality","Limited commercial/retail amenities","Metro 5+ years out"],
       opportunities: ["Dwarka Expressway access","New schools and hospitals opening","Lower entry price"],
     },
-    price_range: { buy_psf: [6615, 9562], rent_2bhk: [14088, 23775] },
+    price_range: { buy_psf: [8500, 12045], rent_2bhk: [15000, 60000] },
   },
   {
     id: 'sec-89',
@@ -1464,8 +1464,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.94579, 28.41702],
     polygon: SECTOR_POLYGONS['sec-89'] ?? [],
     score: 59,
-    metrics: { aqi: 174, water_tanker_reliance: 3.9, power_outage_mins: 83, noise_db: 46, waterlogging_level: 4 },
-    radar: { air_quality: 43, water_reliability: 21, power_reliability: 59, noise_peace: 68, connectivity: 75, infra_health: 78 },
+    metrics: { aqi: 112, water_tanker_reliance: 4.5, power_outage_mins: 80, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 63, water_reliability: 40, power_reliability: 40, noise_peace: 40, connectivity: 40, infra_health: 78 },
     amenities: {
       hospitals: [{ name: "Sarvodaya Hospital", distance_km: 1.9, rating: 4.2 }],
       schools: [{ name: "Govt Sr Sec School", distance_km: 1.7, rating: 4.0 }],
@@ -1482,7 +1482,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Water tanker dependence remains a daily reality","Limited commercial/retail amenities","Metro 5+ years out"],
       opportunities: ["Dwarka Expressway access","New schools and hospitals opening","Lower entry price"],
     },
-    price_range: { buy_psf: [5915, 8933], rent_2bhk: [14392, 20739] },
+    price_range: { buy_psf: [5500, 10970], rent_2bhk: [22000, 45000] },
   },
   {
     id: 'sec-74a',
@@ -1493,8 +1493,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.00105, 28.40739],
     polygon: SECTOR_POLYGONS['sec-74a'] ?? [],
     score: 62,
-    metrics: { aqi: 180, water_tanker_reliance: 3.3, power_outage_mins: 64, noise_db: 75, waterlogging_level: 2 },
-    radar: { air_quality: 40, water_reliability: 39, power_reliability: 68, noise_peace: 20, connectivity: 83, infra_health: 68 },
+    metrics: { aqi: 105, water_tanker_reliance: 4.5, power_outage_mins: 80, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 67, water_reliability: 40, power_reliability: 40, noise_peace: 40, connectivity: 50, infra_health: 68 },
     amenities: {
       hospitals: [{ name: "Park Hospital", distance_km: 3.5, rating: 4.1 }],
       schools: [{ name: "Amity International School", distance_km: 1.0, rating: 4.1 }],
@@ -1511,7 +1511,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Severe peak-hour congestion","Construction dust through 2027","Patchy infrastructure"],
       opportunities: ["Elevated road completion","Sohna Elevated Corridor","New mall openings"],
     },
-    price_range: { buy_psf: [9778, 11713], rent_2bhk: [19451, 27787] },
+    price_range: { buy_psf: [8000, 11500], rent_2bhk: [20000, 55000] },
   },
   {
     id: 'sec-72',
@@ -1522,8 +1522,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.03205, 28.41013],
     polygon: SECTOR_POLYGONS['sec-72'] ?? [],
     score: 65,
-    metrics: { aqi: 169, water_tanker_reliance: 3.5, power_outage_mins: 74, noise_db: 66, waterlogging_level: 3 },
-    radar: { air_quality: 46, water_reliability: 32, power_reliability: 63, noise_peace: 28, connectivity: 59, infra_health: 50 },
+    metrics: { aqi: 98, water_tanker_reliance: 2.5, power_outage_mins: 68, noise_db: 68, waterlogging_level: 4 },
+    radar: { air_quality: 71, water_reliability: 50, power_reliability: 50, noise_peace: 50, connectivity: 60, infra_health: 50 },
     amenities: {
       hospitals: [{ name: "Cygnus Hospital", distance_km: 1.7, rating: 4.1 }],
       schools: [{ name: "Lotus Valley", distance_km: 2.1, rating: 4.3 }],
@@ -1540,7 +1540,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Severe peak-hour congestion","Construction dust through 2027","Patchy infrastructure"],
       opportunities: ["Elevated road completion","Sohna Elevated Corridor","New mall openings"],
     },
-    price_range: { buy_psf: [9092, 11914], rent_2bhk: [18711, 29143] },
+    price_range: { buy_psf: [12000, 17000], rent_2bhk: [30000, 70000] },
   },
   {
     id: 'sec-71',
@@ -1551,8 +1551,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.0273, 28.40942],
     polygon: SECTOR_POLYGONS['sec-71'] ?? [],
     score: 71,
-    metrics: { aqi: 171, water_tanker_reliance: 3.4, power_outage_mins: 79, noise_db: 71, waterlogging_level: 4 },
-    radar: { air_quality: 45, water_reliability: 29, power_reliability: 61, noise_peace: 20, connectivity: 75, infra_health: 75 },
+    metrics: { aqi: 105, water_tanker_reliance: 3.5, power_outage_mins: 80, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 67, water_reliability: 50, power_reliability: 40, noise_peace: 40, connectivity: 50, infra_health: 75 },
     amenities: {
       hospitals: [{ name: "Manipal Hospital", distance_km: 1.0, rating: 4.5 }],
       schools: [{ name: "Lotus Valley", distance_km: 2.5, rating: 4.2 }],
@@ -1569,7 +1569,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Severe peak-hour congestion","Construction dust through 2027","Patchy infrastructure"],
       opportunities: ["Elevated road completion","Sohna Elevated Corridor","New mall openings"],
     },
-    price_range: { buy_psf: [9074, 11354], rent_2bhk: [24891, 30793] },
+    price_range: { buy_psf: [9500, 14000], rent_2bhk: [22000, 60000] },
   },
   {
     id: 'sec-72a',
@@ -1580,8 +1580,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.02168, 28.42507],
     polygon: SECTOR_POLYGONS['sec-72a'] ?? [],
     score: 62,
-    metrics: { aqi: 154, water_tanker_reliance: 3.6, power_outage_mins: 97, noise_db: 69, waterlogging_level: 3 },
-    radar: { air_quality: 53, water_reliability: 30, power_reliability: 52, noise_peace: 22, connectivity: 71, infra_health: 81 },
+    metrics: { aqi: 98, water_tanker_reliance: 2.5, power_outage_mins: 68, noise_db: 68, waterlogging_level: 4 },
+    radar: { air_quality: 71, water_reliability: 50, power_reliability: 50, noise_peace: 50, connectivity: 60, infra_health: 81 },
     amenities: {
       hospitals: [{ name: "Park Hospital", distance_km: 0.7, rating: 3.9 }],
       schools: [{ name: "Lotus Valley", distance_km: 3.5, rating: 4.0 }],
@@ -1598,7 +1598,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Severe peak-hour congestion","Construction dust through 2027","Patchy infrastructure"],
       opportunities: ["Elevated road completion","Sohna Elevated Corridor","New mall openings"],
     },
-    price_range: { buy_psf: [9942, 14258], rent_2bhk: [26936, 38296] },
+    price_range: { buy_psf: [12000, 17000], rent_2bhk: [30000, 70000] },
   },
   {
     id: 'sec-73',
@@ -1609,8 +1609,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.0133, 28.40659],
     polygon: SECTOR_POLYGONS['sec-73'] ?? [],
     score: 67,
-    metrics: { aqi: 178, water_tanker_reliance: 3.3, power_outage_mins: 78, noise_db: 67, waterlogging_level: 4 },
-    radar: { air_quality: 41, water_reliability: 31, power_reliability: 61, noise_peace: 26, connectivity: 60, infra_health: 76 },
+    metrics: { aqi: 105, water_tanker_reliance: 4.5, power_outage_mins: 80, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 67, water_reliability: 40, power_reliability: 40, noise_peace: 40, connectivity: 50, infra_health: 76 },
     amenities: {
       hospitals: [{ name: "Cygnus Hospital", distance_km: 4.3, rating: 4.2 }],
       schools: [{ name: "Lotus Valley", distance_km: 3.5, rating: 4.1 }],
@@ -1627,7 +1627,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Severe peak-hour congestion","Construction dust through 2027","Patchy infrastructure"],
       opportunities: ["Elevated road completion","Sohna Elevated Corridor","New mall openings"],
     },
-    price_range: { buy_psf: [9790, 11737], rent_2bhk: [24627, 31228] },
+    price_range: { buy_psf: [8000, 11500], rent_2bhk: [20000, 55000] },
   },
   {
     id: 'sec-74',
@@ -1638,8 +1638,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.009, 28.40877],
     polygon: SECTOR_POLYGONS['sec-74'] ?? [],
     score: 60,
-    metrics: { aqi: 173, water_tanker_reliance: 4.4, power_outage_mins: 82, noise_db: 63, waterlogging_level: 4 },
-    radar: { air_quality: 44, water_reliability: 15, power_reliability: 59, noise_peace: 34, connectivity: 80, infra_health: 69 },
+    metrics: { aqi: 105, water_tanker_reliance: 4.5, power_outage_mins: 80, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 67, water_reliability: 40, power_reliability: 40, noise_peace: 40, connectivity: 50, infra_health: 69 },
     amenities: {
       hospitals: [{ name: "Park Hospital", distance_km: 2.3, rating: 3.9 }],
       schools: [{ name: "Suncity School", distance_km: 3.2, rating: 4.5 }],
@@ -1656,7 +1656,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Severe peak-hour congestion","Construction dust through 2027","Patchy infrastructure"],
       opportunities: ["Elevated road completion","Sohna Elevated Corridor","New mall openings"],
     },
-    price_range: { buy_psf: [9646, 13311], rent_2bhk: [23019, 29715] },
+    price_range: { buy_psf: [8000, 11500], rent_2bhk: [20000, 55000] },
   },
   {
     id: 'sec-75a',
@@ -1667,8 +1667,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.99423, 28.40139],
     polygon: SECTOR_POLYGONS['sec-75a'] ?? [],
     score: 68,
-    metrics: { aqi: 177, water_tanker_reliance: 3.9, power_outage_mins: 91, noise_db: 63, waterlogging_level: 3 },
-    radar: { air_quality: 42, water_reliability: 25, power_reliability: 55, noise_peace: 34, connectivity: 67, infra_health: 83 },
+    metrics: { aqi: 105, water_tanker_reliance: 4.5, power_outage_mins: 80, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 67, water_reliability: 40, power_reliability: 40, noise_peace: 40, connectivity: 50, infra_health: 83 },
     amenities: {
       hospitals: [{ name: "Columbia Asia Hospital", distance_km: 1.1, rating: 4.7 }],
       schools: [{ name: "Lotus Valley", distance_km: 2.3, rating: 4.1 }],
@@ -1685,7 +1685,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Severe peak-hour congestion","Construction dust through 2027","Patchy infrastructure"],
       opportunities: ["Elevated road completion","Sohna Elevated Corridor","New mall openings"],
     },
-    price_range: { buy_psf: [8212, 9894], rent_2bhk: [25893, 36264] },
+    price_range: { buy_psf: [8000, 11500], rent_2bhk: [20000, 55000] },
   },
   {
     id: 'sec-34',
@@ -1696,8 +1696,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.01346, 28.42749],
     polygon: SECTOR_POLYGONS['sec-34'] ?? [],
     score: 70,
-    metrics: { aqi: 175, water_tanker_reliance: 2.4, power_outage_mins: 55, noise_db: 60, waterlogging_level: 2 },
-    radar: { air_quality: 43, water_reliability: 53, power_reliability: 73, noise_peace: 40, connectivity: 83, infra_health: 63 },
+    metrics: { aqi: 100, water_tanker_reliance: 1.5, power_outage_mins: 68, noise_db: 68, waterlogging_level: 4 },
+    radar: { air_quality: 70, water_reliability: 60, power_reliability: 50, noise_peace: 50, connectivity: 60, infra_health: 63 },
     amenities: {
       hospitals: [{ name: "Park Hospital", distance_km: 3.4, rating: 4.4 }],
       schools: [{ name: "DPS Sector 45", distance_km: 1.2, rating: 4.3 }],
@@ -1713,7 +1713,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Limited room for new amenities","Older plot/builder-floor stock"],
       opportunities: ["Established neighborhood feel","Stable resale market","Proximity to commercial spine"],
     },
-    price_range: { buy_psf: [10104, 13721], rent_2bhk: [29648, 36754] },
+    price_range: { buy_psf: [10000, 13500], rent_2bhk: [20000, 35000] },
   },
   {
     id: 'sec-81',
@@ -1724,8 +1724,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.94775, 28.38949],
     polygon: SECTOR_POLYGONS['sec-81'] ?? [],
     score: 59,
-    metrics: { aqi: 159, water_tanker_reliance: 4.6, power_outage_mins: 73, noise_db: 48, waterlogging_level: 4 },
-    radar: { air_quality: 51, water_reliability: 15, power_reliability: 64, noise_peace: 64, connectivity: 81, infra_health: 60 },
+    metrics: { aqi: 105, water_tanker_reliance: 4.5, power_outage_mins: 80, noise_db: 68, waterlogging_level: 4 },
+    radar: { air_quality: 67, water_reliability: 40, power_reliability: 40, noise_peace: 50, connectivity: 40, infra_health: 60 },
     amenities: {
       hospitals: [{ name: "Aarvy Healthcare", distance_km: 3.2, rating: 4.6 }],
       schools: [{ name: "Holy Child School", distance_km: 1.7, rating: 4.1 }],
@@ -1742,7 +1742,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Water tanker dependence remains a daily reality","Limited commercial/retail amenities","Metro 5+ years out"],
       opportunities: ["Dwarka Expressway access","New schools and hospitals opening","Lower entry price"],
     },
-    price_range: { buy_psf: [5832, 10099], rent_2bhk: [15890, 25462] },
+    price_range: { buy_psf: [9000, 13000], rent_2bhk: [15000, 30000] },
   },
   {
     id: 'sec-86',
@@ -1753,8 +1753,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.94097, 28.39925],
     polygon: SECTOR_POLYGONS['sec-86'] ?? [],
     score: 63,
-    metrics: { aqi: 182, water_tanker_reliance: 4.2, power_outage_mins: 107, noise_db: 51, waterlogging_level: 4 },
-    radar: { air_quality: 39, water_reliability: 16, power_reliability: 47, noise_peace: 58, connectivity: 56, infra_health: 58 },
+    metrics: { aqi: 110, water_tanker_reliance: 4.5, power_outage_mins: 80, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 65, water_reliability: 40, power_reliability: 40, noise_peace: 40, connectivity: 40, infra_health: 58 },
     amenities: {
       hospitals: [{ name: "Aarvy Healthcare", distance_km: 1.7, rating: 4.1 }],
       schools: [{ name: "New Era Public School", distance_km: 0.8, rating: 4.2 }],
@@ -1771,7 +1771,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Water tanker dependence remains a daily reality","Limited commercial/retail amenities","Metro 5+ years out"],
       opportunities: ["Dwarka Expressway access","New schools and hospitals opening","Lower entry price"],
     },
-    price_range: { buy_psf: [6126, 9111], rent_2bhk: [14631, 24540] },
+    price_range: { buy_psf: [8500, 12000], rent_2bhk: [10000, 60000] },
   },
   {
     id: 'sec-1',
@@ -1782,8 +1782,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.95102, 28.35971],
     polygon: SECTOR_POLYGONS['sec-1'] ?? [],
     score: 59,
-    metrics: { aqi: 181, water_tanker_reliance: 3.1, power_outage_mins: 92, noise_db: 69, waterlogging_level: 5 },
-    radar: { air_quality: 40, water_reliability: 30, power_reliability: 54, noise_peace: 22, connectivity: 84, infra_health: 73 },
+    metrics: { aqi: 105, water_tanker_reliance: 1.5, power_outage_mins: 56, noise_db: 68, waterlogging_level: 4 },
+    radar: { air_quality: 67, water_reliability: 70, power_reliability: 60, noise_peace: 50, connectivity: 40, infra_health: 73 },
     amenities: {
       hospitals: [{ name: "Sunrise Hospital", distance_km: 2.0, rating: 4.2 }],
       schools: [{ name: "New Era Public School", distance_km: 3.7, rating: 4.4 }],
@@ -1799,7 +1799,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Aging civic infrastructure","Frequent waterlogging","Encroached roads"],
       opportunities: ["Walk-to-work proximity","Mature local retail","Cheap entry"],
     },
-    price_range: { buy_psf: [5112, 9107], rent_2bhk: [12008, 16142] },
+    price_range: { buy_psf: [9500, 11500], rent_2bhk: [12000, 35000] },
   },
   {
     id: 'sec-88b',
@@ -1810,8 +1810,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.95717, 28.44296],
     polygon: SECTOR_POLYGONS['sec-88b'] ?? [],
     score: 54,
-    metrics: { aqi: 171, water_tanker_reliance: 3.9, power_outage_mins: 81, noise_db: 46, waterlogging_level: 3 },
-    radar: { air_quality: 45, water_reliability: 25, power_reliability: 60, noise_peace: 68, connectivity: 71, infra_health: 69 },
+    metrics: { aqi: 110, water_tanker_reliance: 4.5, power_outage_mins: 80, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 65, water_reliability: 40, power_reliability: 40, noise_peace: 40, connectivity: 40, infra_health: 69 },
     amenities: {
       hospitals: [{ name: "Aarvy Healthcare", distance_km: 0.8, rating: 3.9 }],
       schools: [{ name: "Govt Sr Sec School", distance_km: 0.5, rating: 4.4 }],
@@ -1828,7 +1828,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Water tanker dependence remains a daily reality","Limited commercial/retail amenities","Metro 5+ years out"],
       opportunities: ["Dwarka Expressway access","New schools and hospitals opening","Lower entry price"],
     },
-    price_range: { buy_psf: [6738, 9679], rent_2bhk: [14942, 19446] },
+    price_range: { buy_psf: [8500, 12045], rent_2bhk: [15000, 60000] },
   },
   {
     id: 'sec-88a',
@@ -1839,8 +1839,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.95508, 28.43193],
     polygon: SECTOR_POLYGONS['sec-88a'] ?? [],
     score: 63,
-    metrics: { aqi: 166, water_tanker_reliance: 3.6, power_outage_mins: 93, noise_db: 45, waterlogging_level: 3 },
-    radar: { air_quality: 47, water_reliability: 30, power_reliability: 54, noise_peace: 70, connectivity: 68, infra_health: 60 },
+    metrics: { aqi: 110, water_tanker_reliance: 4.5, power_outage_mins: 80, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 65, water_reliability: 40, power_reliability: 40, noise_peace: 40, connectivity: 40, infra_health: 60 },
     amenities: {
       hospitals: [{ name: "Sarvodaya Hospital", distance_km: 3.7, rating: 4.3 }],
       schools: [{ name: "New Era Public School", distance_km: 0.4, rating: 4.6 }],
@@ -1857,7 +1857,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Water tanker dependence remains a daily reality","Limited commercial/retail amenities","Metro 5+ years out"],
       opportunities: ["Dwarka Expressway access","New schools and hospitals opening","Lower entry price"],
     },
-    price_range: { buy_psf: [6835, 9486], rent_2bhk: [15800, 23238] },
+    price_range: { buy_psf: [8500, 12045], rent_2bhk: [15000, 60000] },
   },
   {
     id: 'sec-40',
@@ -1868,8 +1868,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.04838, 28.44984],
     polygon: SECTOR_POLYGONS['sec-40'] ?? [],
     score: 66,
-    metrics: { aqi: 164, water_tanker_reliance: 3.3, power_outage_mins: 76, noise_db: 61, waterlogging_level: 2 },
-    radar: { air_quality: 48, water_reliability: 39, power_reliability: 62, noise_peace: 38, connectivity: 51, infra_health: 62 },
+    metrics: { aqi: 95, water_tanker_reliance: 3.5, power_outage_mins: 68, noise_db: 68, waterlogging_level: 5 },
+    radar: { air_quality: 73, water_reliability: 50, power_reliability: 50, noise_peace: 50, connectivity: 70, infra_health: 62 },
     amenities: {
       hospitals: [{ name: "Manipal Hospital", distance_km: 3.2, rating: 3.8 }],
       schools: [{ name: "Suncity School", distance_km: 2.0, rating: 4.5 }],
@@ -1885,7 +1885,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Limited room for new amenities","Older plot/builder-floor stock"],
       opportunities: ["Established neighborhood feel","Stable resale market","Proximity to commercial spine"],
     },
-    price_range: { buy_psf: [8081, 10303], rent_2bhk: [21464, 27734] },
+    price_range: { buy_psf: [10400, 13900], rent_2bhk: [20000, 35000] },
   },
   {
     id: 'sec-29',
@@ -1896,8 +1896,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.07309, 28.46294],
     polygon: SECTOR_POLYGONS['sec-29'] ?? [],
     score: 71,
-    metrics: { aqi: 152, water_tanker_reliance: 3.2, power_outage_mins: 74, noise_db: 59, waterlogging_level: 4 },
-    radar: { air_quality: 54, water_reliability: 32, power_reliability: 63, noise_peace: 42, connectivity: 53, infra_health: 73 },
+    metrics: { aqi: 92, water_tanker_reliance: 3.5, power_outage_mins: 68, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 74, water_reliability: 50, power_reliability: 50, noise_peace: 40, connectivity: 80, infra_health: 73 },
     amenities: {
       hospitals: [{ name: "Columbia Asia Hospital", distance_km: 2.5, rating: 3.8 }],
       schools: [{ name: "DPS Sector 45", distance_km: 2.5, rating: 4.2 }],
@@ -1913,7 +1913,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Limited room for new amenities","Older plot/builder-floor stock"],
       opportunities: ["Established neighborhood feel","Stable resale market","Proximity to commercial spine"],
     },
-    price_range: { buy_psf: [10245, 13408], rent_2bhk: [26490, 36173] },
+    price_range: { buy_psf: [14000, 20750], rent_2bhk: [25000, 50000] },
   },
   {
     id: 'sec-70a',
@@ -1924,8 +1924,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.02262, 28.38368],
     polygon: SECTOR_POLYGONS['sec-70a'] ?? [],
     score: 64,
-    metrics: { aqi: 166, water_tanker_reliance: 4.2, power_outage_mins: 97, noise_db: 66, waterlogging_level: 2 },
-    radar: { air_quality: 47, water_reliability: 24, power_reliability: 52, noise_peace: 28, connectivity: 80, infra_health: 63 },
+    metrics: { aqi: 102, water_tanker_reliance: 4.5, power_outage_mins: 80, noise_db: 68, waterlogging_level: 4 },
+    radar: { air_quality: 69, water_reliability: 40, power_reliability: 40, noise_peace: 50, connectivity: 50, infra_health: 63 },
     amenities: {
       hospitals: [{ name: "Cygnus Hospital", distance_km: 2.9, rating: 4.3 }],
       schools: [{ name: "Lotus Valley", distance_km: 2.3, rating: 4.4 }],
@@ -1942,7 +1942,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Severe peak-hour congestion","Construction dust through 2027","Patchy infrastructure"],
       opportunities: ["Elevated road completion","Sohna Elevated Corridor","New mall openings"],
     },
-    price_range: { buy_psf: [9408, 12406], rent_2bhk: [23707, 28980] },
+    price_range: { buy_psf: [8500, 12500], rent_2bhk: [22000, 65000] },
   },
   {
     id: 'sec-36',
@@ -1953,8 +1953,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.99431, 28.42094],
     polygon: SECTOR_POLYGONS['sec-36'] ?? [],
     score: 70,
-    metrics: { aqi: 156, water_tanker_reliance: 2.2, power_outage_mins: 47, noise_db: 55, waterlogging_level: 4 },
-    radar: { air_quality: 52, water_reliability: 48, power_reliability: 77, noise_peace: 50, connectivity: 55, infra_health: 75 },
+    metrics: { aqi: 100, water_tanker_reliance: 3.5, power_outage_mins: 68, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 70, water_reliability: 50, power_reliability: 50, noise_peace: 40, connectivity: 60, infra_health: 75 },
     amenities: {
       hospitals: [{ name: "W Pratiksha Hospital", distance_km: 0.6, rating: 4.5 }],
       schools: [{ name: "Ryan International", distance_km: 1.9, rating: 4.0 }],
@@ -1970,7 +1970,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Limited room for new amenities","Older plot/builder-floor stock"],
       opportunities: ["Established neighborhood feel","Stable resale market","Proximity to commercial spine"],
     },
-    price_range: { buy_psf: [9937, 13072], rent_2bhk: [28180, 36537] },
+    price_range: { buy_psf: [10000, 13500], rent_2bhk: [20000, 35000] },
   },
   {
     id: 'sec-67',
@@ -1981,8 +1981,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.06294, 28.38491],
     polygon: SECTOR_POLYGONS['sec-67'] ?? [],
     score: 64,
-    metrics: { aqi: 150, water_tanker_reliance: 3.3, power_outage_mins: 46, noise_db: 68, waterlogging_level: 2 },
-    radar: { air_quality: 55, water_reliability: 39, power_reliability: 77, noise_peace: 24, connectivity: 56, infra_health: 52 },
+    metrics: { aqi: 100, water_tanker_reliance: 3.5, power_outage_mins: 80, noise_db: 68, waterlogging_level: 4 },
+    radar: { air_quality: 70, water_reliability: 40, power_reliability: 40, noise_peace: 50, connectivity: 50, infra_health: 52 },
     amenities: {
       hospitals: [{ name: "Park Hospital", distance_km: 2.0, rating: 4.3 }],
       schools: [{ name: "DPS Sector 45", distance_km: 2.6, rating: 4.3 }],
@@ -1999,7 +1999,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Multi-year construction dust","Sector road quality varies"],
       opportunities: ["Metro Phase II connectivity","Rapidly improving amenities"],
     },
-    price_range: { buy_psf: [13219, 14889], rent_2bhk: [51105, 62201] },
+    price_range: { buy_psf: [9000, 13000], rent_2bhk: [25000, 75000] },
   },
   {
     id: 'sec-65',
@@ -2010,8 +2010,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.07133, 28.40189],
     polygon: SECTOR_POLYGONS['sec-65'] ?? [],
     score: 76,
-    metrics: { aqi: 166, water_tanker_reliance: 2.5, power_outage_mins: 68, noise_db: 66, waterlogging_level: 3 },
-    radar: { air_quality: 47, water_reliability: 48, power_reliability: 66, noise_peace: 28, connectivity: 68, infra_health: 72 },
+    metrics: { aqi: 95, water_tanker_reliance: 3.5, power_outage_mins: 68, noise_db: 68, waterlogging_level: 4 },
+    radar: { air_quality: 73, water_reliability: 50, power_reliability: 50, noise_peace: 50, connectivity: 60, infra_health: 72 },
     amenities: {
       hospitals: [{ name: "Park Hospital", distance_km: 1.1, rating: 4.6 }],
       schools: [{ name: "Suncity School", distance_km: 3.2, rating: 4.5 }],
@@ -2028,7 +2028,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Multi-year construction dust","Sector road quality varies"],
       opportunities: ["Metro Phase II connectivity","Rapidly improving amenities"],
     },
-    price_range: { buy_psf: [13715, 16644], rent_2bhk: [42444, 46502] },
+    price_range: { buy_psf: [13000, 18000], rent_2bhk: [40000, 110000] },
   },
   {
     id: 'sec-37',
@@ -2039,8 +2039,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.9988, 28.43606],
     polygon: SECTOR_POLYGONS['sec-37'] ?? [],
     score: 70,
-    metrics: { aqi: 154, water_tanker_reliance: 2.4, power_outage_mins: 66, noise_db: 56, waterlogging_level: 3 },
-    radar: { air_quality: 53, water_reliability: 49, power_reliability: 67, noise_peace: 48, connectivity: 90, infra_health: 58 },
+    metrics: { aqi: 100, water_tanker_reliance: 3.5, power_outage_mins: 68, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 70, water_reliability: 50, power_reliability: 50, noise_peace: 40, connectivity: 60, infra_health: 58 },
     amenities: {
       hospitals: [{ name: "Park Hospital", distance_km: 3.0, rating: 3.8 }],
       schools: [{ name: "Suncity School", distance_km: 2.3, rating: 4.1 }],
@@ -2056,7 +2056,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Limited room for new amenities","Older plot/builder-floor stock"],
       opportunities: ["Established neighborhood feel","Stable resale market","Proximity to commercial spine"],
     },
-    price_range: { buy_psf: [8343, 12425], rent_2bhk: [22445, 33342] },
+    price_range: { buy_psf: [10000, 13500], rent_2bhk: [20000, 35000] },
   },
   {
     id: 'sec-37a',
@@ -2067,8 +2067,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.99519, 28.44138],
     polygon: SECTOR_POLYGONS['sec-37a'] ?? [],
     score: 63,
-    metrics: { aqi: 160, water_tanker_reliance: 2.5, power_outage_mins: 40, noise_db: 64, waterlogging_level: 4 },
-    radar: { air_quality: 50, water_reliability: 44, power_reliability: 80, noise_peace: 32, connectivity: 69, infra_health: 59 },
+    metrics: { aqi: 100, water_tanker_reliance: 3.5, power_outage_mins: 68, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 70, water_reliability: 50, power_reliability: 50, noise_peace: 40, connectivity: 60, infra_health: 59 },
     amenities: {
       hospitals: [{ name: "Manipal Hospital", distance_km: 2.2, rating: 4.3 }],
       schools: [{ name: "DPS Sector 45", distance_km: 3.1, rating: 4.1 }],
@@ -2084,7 +2084,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Limited room for new amenities","Older plot/builder-floor stock"],
       opportunities: ["Established neighborhood feel","Stable resale market","Proximity to commercial spine"],
     },
-    price_range: { buy_psf: [9057, 12038], rent_2bhk: [20826, 27639] },
+    price_range: { buy_psf: [10000, 13500], rent_2bhk: [20000, 35000] },
   },
   {
     id: 'sec-37b',
@@ -2095,8 +2095,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.98364, 28.43735],
     polygon: SECTOR_POLYGONS['sec-37b'] ?? [],
     score: 64,
-    metrics: { aqi: 159, water_tanker_reliance: 2.9, power_outage_mins: 78, noise_db: 60, waterlogging_level: 4 },
-    radar: { air_quality: 51, water_reliability: 37, power_reliability: 61, noise_peace: 40, connectivity: 53, infra_health: 59 },
+    metrics: { aqi: 100, water_tanker_reliance: 3.5, power_outage_mins: 68, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 70, water_reliability: 50, power_reliability: 50, noise_peace: 40, connectivity: 60, infra_health: 59 },
     amenities: {
       hospitals: [{ name: "Columbia Asia Hospital", distance_km: 2.8, rating: 4.4 }],
       schools: [{ name: "DPS Sector 45", distance_km: 2.4, rating: 4.0 }],
@@ -2112,7 +2112,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Limited room for new amenities","Older plot/builder-floor stock"],
       opportunities: ["Established neighborhood feel","Stable resale market","Proximity to commercial spine"],
     },
-    price_range: { buy_psf: [8171, 10144], rent_2bhk: [20493, 25484] },
+    price_range: { buy_psf: [10000, 13500], rent_2bhk: [20000, 35000] },
   },
   {
     id: 'sec-70',
@@ -2123,8 +2123,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.02302, 28.39505],
     polygon: SECTOR_POLYGONS['sec-70'] ?? [],
     score: 60,
-    metrics: { aqi: 162, water_tanker_reliance: 3.7, power_outage_mins: 88, noise_db: 59, waterlogging_level: 2 },
-    radar: { air_quality: 49, water_reliability: 32, power_reliability: 56, noise_peace: 42, connectivity: 79, infra_health: 53 },
+    metrics: { aqi: 102, water_tanker_reliance: 4.5, power_outage_mins: 80, noise_db: 68, waterlogging_level: 4 },
+    radar: { air_quality: 69, water_reliability: 40, power_reliability: 40, noise_peace: 50, connectivity: 50, infra_health: 53 },
     amenities: {
       hospitals: [{ name: "W Pratiksha Hospital", distance_km: 2.6, rating: 4.4 }],
       schools: [{ name: "DPS Sector 45", distance_km: 2.0, rating: 4.5 }],
@@ -2141,7 +2141,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Severe peak-hour congestion","Construction dust through 2027","Patchy infrastructure"],
       opportunities: ["Elevated road completion","Sohna Elevated Corridor","New mall openings"],
     },
-    price_range: { buy_psf: [7840, 10245], rent_2bhk: [25675, 36592] },
+    price_range: { buy_psf: [8500, 12500], rent_2bhk: [22000, 65000] },
   },
   {
     id: 'sec-69',
@@ -2152,8 +2152,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.03733, 28.39817],
     polygon: SECTOR_POLYGONS['sec-69'] ?? [],
     score: 60,
-    metrics: { aqi: 156, water_tanker_reliance: 4.4, power_outage_mins: 62, noise_db: 71, waterlogging_level: 3 },
-    radar: { air_quality: 52, water_reliability: 17, power_reliability: 69, noise_peace: 20, connectivity: 52, infra_health: 59 },
+    metrics: { aqi: 102, water_tanker_reliance: 4.5, power_outage_mins: 80, noise_db: 68, waterlogging_level: 4 },
+    radar: { air_quality: 69, water_reliability: 40, power_reliability: 40, noise_peace: 50, connectivity: 50, infra_health: 59 },
     amenities: {
       hospitals: [{ name: "Cygnus Hospital", distance_km: 3.2, rating: 4.5 }],
       schools: [{ name: "Ryan International", distance_km: 2.0, rating: 4.2 }],
@@ -2170,7 +2170,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Severe peak-hour congestion","Construction dust through 2027","Patchy infrastructure"],
       opportunities: ["Elevated road completion","Sohna Elevated Corridor","New mall openings"],
     },
-    price_range: { buy_psf: [8256, 10355], rent_2bhk: [22180, 28299] },
+    price_range: { buy_psf: [8500, 12500], rent_2bhk: [22000, 65000] },
   },
   {
     id: 'sec-64',
@@ -2181,8 +2181,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [77.07753, 28.39231],
     polygon: SECTOR_POLYGONS['sec-64'] ?? [],
     score: 80,
-    metrics: { aqi: 154, water_tanker_reliance: 2.8, power_outage_mins: 43, noise_db: 56, waterlogging_level: 3 },
-    radar: { air_quality: 53, water_reliability: 43, power_reliability: 79, noise_peace: 48, connectivity: 62, infra_health: 46 },
+    metrics: { aqi: 95, water_tanker_reliance: 3.5, power_outage_mins: 68, noise_db: 68, waterlogging_level: 4 },
+    radar: { air_quality: 73, water_reliability: 40, power_reliability: 50, noise_peace: 50, connectivity: 60, infra_health: 46 },
     amenities: {
       hospitals: [{ name: "Manipal Hospital", distance_km: 2.2, rating: 3.9 }],
       schools: [{ name: "Ryan International", distance_km: 2.8, rating: 4.4 }],
@@ -2199,7 +2199,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Multi-year construction dust","Sector road quality varies"],
       opportunities: ["Metro Phase II connectivity","Rapidly improving amenities"],
     },
-    price_range: { buy_psf: [12051, 13856], rent_2bhk: [38329, 48037] },
+    price_range: { buy_psf: [14000, 25000], rent_2bhk: [35000, 90000] },
   },
   {
     id: 'sec-37c',
@@ -2210,8 +2210,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.9884, 28.44829],
     polygon: SECTOR_POLYGONS['sec-37c'] ?? [],
     score: 61,
-    metrics: { aqi: 168, water_tanker_reliance: 2.5, power_outage_mins: 58, noise_db: 58, waterlogging_level: 3 },
-    radar: { air_quality: 46, water_reliability: 48, power_reliability: 71, noise_peace: 44, connectivity: 87, infra_health: 60 },
+    metrics: { aqi: 105, water_tanker_reliance: 3.5, power_outage_mins: 80, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 67, water_reliability: 50, power_reliability: 40, noise_peace: 40, connectivity: 60, infra_health: 60 },
     amenities: {
       hospitals: [{ name: "Manipal Hospital", distance_km: 2.5, rating: 4.0 }],
       schools: [{ name: "Lotus Valley", distance_km: 2.1, rating: 3.9 }],
@@ -2227,7 +2227,7 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Limited room for new amenities","Older plot/builder-floor stock"],
       opportunities: ["Established neighborhood feel","Stable resale market","Proximity to commercial spine"],
     },
-    price_range: { buy_psf: [8642, 11966], rent_2bhk: [21859, 32031] },
+    price_range: { buy_psf: [8000, 11000], rent_2bhk: [8000, 30000] },
   },
   {
     id: 'sec-37d',
@@ -2238,8 +2238,8 @@ export const GENERATED_SECTORS: Sector[] = [
     coordinates: [76.97191, 28.44224],
     polygon: SECTOR_POLYGONS['sec-37d'] ?? [],
     score: 65,
-    metrics: { aqi: 161, water_tanker_reliance: 2.4, power_outage_mins: 57, noise_db: 65, waterlogging_level: 3 },
-    radar: { air_quality: 50, water_reliability: 49, power_reliability: 72, noise_peace: 30, connectivity: 86, infra_health: 47 },
+    metrics: { aqi: 105, water_tanker_reliance: 3.5, power_outage_mins: 80, noise_db: 72, waterlogging_level: 4 },
+    radar: { air_quality: 67, water_reliability: 50, power_reliability: 40, noise_peace: 40, connectivity: 60, infra_health: 47 },
     amenities: {
       hospitals: [{ name: "Cygnus Hospital", distance_km: 2.0, rating: 4.1 }],
       schools: [{ name: "Suncity School", distance_km: 3.5, rating: 3.9 }],
@@ -2255,6 +2255,6 @@ export const GENERATED_SECTORS: Sector[] = [
       risks: ["Limited room for new amenities","Older plot/builder-floor stock"],
       opportunities: ["Established neighborhood feel","Stable resale market","Proximity to commercial spine"],
     },
-    price_range: { buy_psf: [8888, 12966], rent_2bhk: [23603, 32099] },
+    price_range: { buy_psf: [10000, 18000], rent_2bhk: [8000, 45000] },
   },
 ]
