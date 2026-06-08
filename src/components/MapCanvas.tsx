@@ -12,8 +12,10 @@ import { commuteColor } from '@/lib/commuteUtils'
 // deploy domain in the Stadia dashboard (domain-based auth, no secret key in
 // client code). Attribution is required by Stadia + OSM — see AttributionControl
 // added below. Swap back to basemaps.cartocdn.com to revert.
-const STYLE_DAY   = 'https://tiles.stadiamaps.com/styles/alidade_smooth.json'
-const STYLE_NIGHT = 'https://tiles.stadiamaps.com/styles/alidade_smooth_dark.json'
+const STADIA_KEY = process.env.NEXT_PUBLIC_STADIA_API_KEY
+const _key = STADIA_KEY ? `?api_key=${STADIA_KEY}` : ''
+const STYLE_DAY   = `https://tiles.stadiamaps.com/styles/alidade_smooth.json${_key}`
+const STYLE_NIGHT = `https://tiles.stadiamaps.com/styles/alidade_smooth_dark.json${_key}`
 
 const BG_DAY   = '#F0DEC0'
 const BG_NIGHT = '#0C0907'
