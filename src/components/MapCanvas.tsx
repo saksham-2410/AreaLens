@@ -68,11 +68,19 @@ function extrusionColor(
   } else {
     base = sectorScoreColor(isNight)
   }
-  // Focused/selected area is "un-highlighted": its fill goes fully transparent
-  // so only its border outline shows and the basemap reads through it. Applies
-  // across every overlay. Re-clicking the area restores the fill (see click).
-  return ['case', ['boolean', ['feature-state', 'selected'], false],
-    'rgba(0,0,0,0)', base] as maplibregl.ExpressionSpecification
+  return base
+}
+
+// The focused area is "un-highlighted" by FILTERING it out of the fill layers
+// entirely (transparent fill-extrusion-color via feature-state renders
+// unreliably). Nothing is drawn there → the basemap shows fully; only the
+// border layer (unfiltered) keeps the area's outline. Pass null to restore.
+const HOLLOW_LAYERS = ['sectors-glow', 'sectors-extrusion']
+function setHollowArea(map: maplibregl.Map, id: string | null) {
+  for (const lyr of HOLLOW_LAYERS) {
+    if (!map.getLayer(lyr)) continue
+    map.setFilter(lyr, id ? ['!=', ['get', 'id'], id] : null)
+  }
 }
 
 function borderColor(isNight: boolean): maplibregl.ExpressionSpecification {
@@ -146,7 +154,8 @@ export default function MapCanvas() {
   // Per-feature spring animation state: id -> { from, to, started, raf }
   const liftAnims    = useRef<Record<string, { raf: number }>>({})
 
-  const { phase, isNightMode, activeLayer, commuteTimes, selectedCity } = useStore()
+  const { phase, isNightMode, activeLayer, commuteTimes, selectedCity, selectedSectorId } = useStore()
+  const prevSelRef = useRef<string | null>(null)
 
   // ─── Add data layers (called on first load + after each style switch) ──
   const addDataLayers = (map: maplibregl.Map, isNight: boolean) => {
@@ -184,9 +193,8 @@ export default function MapCanvas() {
           'fill-color': isNight ? '#FFC65A' : '#E89030',
           'fill-opacity': [
             'case',
-            // Focused area is hollow → no glow fill (even while hovered).
-            ['boolean', ['feature-state', 'selected'], false], 0,
             ['boolean', ['feature-state', 'hovered'], false],  isNight ? 0.42 : 0.32,
+            ['boolean', ['feature-state', 'selected'], false], isNight ? 0.28 : 0.20,
             0,
           ],
           'fill-opacity-transition': { duration: 250, delay: 0 },
@@ -248,10 +256,11 @@ export default function MapCanvas() {
       })
     }
 
-    // Restore selection highlight (feature-state is wiped on style switch)
+    // Restore selection highlight + hollow filter (both wiped on style switch)
     const sel = useStore.getState().selectedSectorId
     if (sel) {
       try { map.setFeatureState({ source: 'sectors', id: sel }, { selected: true }) } catch {}
+      setHollowArea(map, sel)
     }
   }
 
@@ -392,17 +401,10 @@ export default function MapCanvas() {
         const sector = getPlaceById(id)
         if (!sector) return
 
-        const prev = useStore.getState().selectedSectorId
-        // Click the already-focused area again → un-focus and re-highlight it
-        // (restore its fill). Mirrors the click-empty deselect.
-        if (prev === id) {
-          map.setFeatureState({ source: 'sectors', id }, { selected: false })
-          useStore.getState().setSelectedSector(null)
-          useStore.getState().setPhase('explore')
-          return
-        }
-        if (prev) map.setFeatureState({ source: 'sectors', id: prev }, { selected: false })
-        map.setFeatureState({ source: 'sectors', id }, { selected: true })
+        // Selection visuals (highlight + hollow filter) are driven by the
+        // selectedSectorId effect — the click only updates the store. Note the
+        // focused area is filtered out of sectors-extrusion, so clicking it
+        // again falls through to the empty-click handler below (→ deselect).
         useStore.getState().setSelectedSector(id)
         useStore.getState().setPhase('focused')
 
@@ -436,10 +438,10 @@ export default function MapCanvas() {
           }
           const prev = useStore.getState().selectedSectorId
           if (prev) {
-            map.setFeatureState({ source: 'sectors', id: prev }, { selected: false })
             useStore.getState().setSelectedSector(null)
             useStore.getState().setPhase('explore')
-            // Phase effect handles the recenter (with padding reset).
+            // Phase effect handles the recenter; selectedSectorId effect clears
+            // the highlight and restores the hollow area's fill.
           }
         }
       })
@@ -542,6 +544,25 @@ export default function MapCanvas() {
     map.setPaintProperty('sectors-extrusion', 'fill-extrusion-color',
       extrusionColor(isNightMode, activeLayer, commuteTimes))
   }, [activeLayer, commuteTimes, isNightMode])
+
+  // ─── SELECTION SYNC ───────────────────────────────────────────────────
+  // Single source of truth for the focused area's visuals, regardless of how
+  // selection changed (map click, panel close, city switch): toggle the border
+  // highlight (feature-state) and the hollow filter that removes its fill so the
+  // basemap shows through, leaving only its outline.
+  useEffect(() => {
+    const map = mapRef.current
+    if (!map || !map.getSource('sectors')) return
+    const prev = prevSelRef.current
+    if (prev && prev !== selectedSectorId) {
+      try { map.setFeatureState({ source: 'sectors', id: prev }, { selected: false }) } catch {}
+    }
+    if (selectedSectorId) {
+      try { map.setFeatureState({ source: 'sectors', id: selectedSectorId }, { selected: true }) } catch {}
+    }
+    setHollowArea(map, selectedSectorId)
+    prevSelRef.current = selectedSectorId
+  }, [selectedSectorId])
 
   return (
     <div
