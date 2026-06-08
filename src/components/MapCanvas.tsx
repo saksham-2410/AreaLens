@@ -7,8 +7,13 @@ import { getSectorsGeoJSON, ALL_SECTORS as SECTORS } from '@/data/sectors'
 import { commuteColor } from '@/lib/commuteUtils'
 
 // CartoDB free styles — Positron (light) for day, Dark Matter for night
-const STYLE_DAY   = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json'
-const STYLE_NIGHT = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
+// Stadia Maps vector styles — Alidade Smooth (≈ Positron) for day and its dark
+// twin for night. On localhost these load keyless; in production, allowlist the
+// deploy domain in the Stadia dashboard (domain-based auth, no secret key in
+// client code). Attribution is required by Stadia + OSM — see AttributionControl
+// added below. Swap back to basemaps.cartocdn.com to revert.
+const STYLE_DAY   = 'https://tiles.stadiamaps.com/styles/alidade_smooth.json'
+const STYLE_NIGHT = 'https://tiles.stadiamaps.com/styles/alidade_smooth_dark.json'
 
 const BG_DAY   = '#F0DEC0'
 const BG_NIGHT = '#0C0907'
@@ -271,6 +276,10 @@ export default function MapCanvas() {
       bearing: -12,
       attributionControl: false,
     })
+    // Stadia + OSM require visible attribution. Compact keeps it to a small
+    // "ⓘ" toggle that expands to the credits, so the locked Gurugram view stays
+    // clean. Strings come from the style's source definitions automatically.
+    map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-right')
     mapRef.current = map
     if (typeof window !== 'undefined') {
       ;(window as unknown as { __map?: maplibregl.Map }).__map = map
