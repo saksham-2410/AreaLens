@@ -211,7 +211,7 @@ export default function MapCanvas() {
           'fill-extrusion-color': extrusionColor(isNight, useStore.getState().activeLayer, useStore.getState().commuteTimes),
           'fill-extrusion-height': HEIGHT,
           'fill-extrusion-base': 0,
-          'fill-extrusion-opacity': isNight ? 0.95 : 0.90,
+          'fill-extrusion-opacity': isNight ? 0.72 : 0.65,
           // Faster transitions so the JS-driven spring animation feels snappy
           // rather than smeared.
           'fill-extrusion-height-transition': { duration: 120, delay: 0 },

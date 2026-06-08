@@ -226,18 +226,18 @@ export default function LandingPage({ onEnter }: { onEnter: () => void }) {
 
         {/* Hero body */}
         <motion.div
-          className="flex-1 flex flex-col justify-center py-10 max-w-7xl mx-auto w-full"
+          className="flex-1 flex flex-col justify-center py-4 sm:py-6 max-w-7xl mx-auto w-full"
           variants={stagger}
           initial="hidden"
           animate="show"
         >
           {/* Stacked mega-wordmark */}
-          <motion.div variants={fadeIn} className="overflow-hidden mb-4 sm:mb-6">
+          <motion.div variants={fadeIn} className="overflow-hidden mb-2 sm:mb-4">
             <motion.h1
               variants={fadeUp}
               style={{
                 fontFamily: 'var(--font-bebas)',
-                fontSize: 'clamp(5.5rem, 23vw, 21rem)',
+                fontSize: 'clamp(5rem, 18vw, 16rem)',
                 letterSpacing: '0.05em',
                 lineHeight: 0.82,
                 color: 'var(--text)',
@@ -250,7 +250,7 @@ export default function LandingPage({ onEnter }: { onEnter: () => void }) {
           </motion.div>
 
           {/* Ornamental rule */}
-          <motion.div variants={fadeIn} className="flex items-center gap-3 mb-8 sm:mb-10">
+          <motion.div variants={fadeIn} className="flex items-center gap-3 mb-6 sm:mb-8">
             <div className="h-px flex-1" style={{ background: 'var(--border)' }} />
             {[0,1,2,3,4].map(i => (
               <div
@@ -339,7 +339,7 @@ export default function LandingPage({ onEnter }: { onEnter: () => void }) {
 
         {/* Scroll indicator */}
         <motion.div
-          className="flex flex-col items-center gap-2 py-6"
+          className="flex flex-col items-center gap-2 py-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.4 }}
           transition={{ delay: 1.8, duration: 0.6 }}

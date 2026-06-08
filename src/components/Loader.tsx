@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const LOAD_STEPS = [
   'Initialising spatial engine...',
-  'Loading Gurugram sector data...',
+  'Loading neighbourhood data...',
   'Calibrating quality indices...',
   'Rendering map canvas...',
   'Ready.',
@@ -96,7 +96,7 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
                   className="text-xs tracking-widest uppercase mt-1"
                   style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}
                 >
-                  Gurugram Intelligence Platform
+                  Neighbourhood Intelligence Platform
                 </p>
               </div>
             </motion.div>
@@ -144,7 +144,7 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
             className="absolute bottom-8 text-xs tracking-widest uppercase"
             style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-dim)' }}
           >
-            Phase 1 · Gurugram, Haryana · v1.0
+            Phase 1 · India Tier-1 Cities · v1.0
           </motion.p>
         </motion.div>
       )}
